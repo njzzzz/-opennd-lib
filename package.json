@@ -1,0 +1,47 @@
+{
+  "name": "@opennd/lib",
+  "type": "module",
+  "private": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./lib/*": [
+      "./lib/*",
+      "./lib/*/index.ts",
+      "./lib/*/index.tsx"
+    ]
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "docs",
+    "index.ts",
+    "lib"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "tsx watch ./playground.ts",
+    "docs": "api-extractor run --local && npx api-documenter markdown -i ./temp -o ./docs"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.4",
+    "vite": "^5.3.1",
+    "vite-plugin-dts": "^3.9.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.16.1",
+    "@microsoft/api-documenter": "^7.25.3",
+    "@microsoft/api-extractor": "^7.47.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/express": "^4.17.21",
+    "@types/node": "20",
+    "eslint": "^9.2.0"
+  }
+}

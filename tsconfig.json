@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@/*": ["./lib/*"]
+    },
+    "declaration": true,
+    "declarationMap": true
+  },
+  "include": [
+    "playground.ts",
+    "lib/**/*.ts",
+    "config/**/*.ts",
+    "vite.config.ts",
+    "index.ts"
+  ]
+}
