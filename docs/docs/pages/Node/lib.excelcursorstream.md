@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-export declare function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, width, }: ExcelStreamArs): Promise<void>;
+export declare function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, filename, width, }: ExcelStreamArs): Promise<void>;
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-{ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, width, }
+{ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, filename, width, }
 
 
 </td><td>

@@ -73,6 +73,25 @@ _(Optional)_  使用第几个header取值,默认为 headers.length - 1
 </td></tr>
 <tr><td>
 
+[filename](./lib.excelstreamars.filename.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+excel 文件名
+
+
+</td></tr>
+<tr><td>
+
 [headers](./lib.excelstreamars.headers.md)
 
 
