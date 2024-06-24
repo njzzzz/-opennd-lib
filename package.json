@@ -34,7 +34,7 @@
     "changelog": "conventional-changelog -i ./docs/docs/pages/Changelog/index.md -s -r 0",
     "publish": "pnpm publish --access=public --publish-branch main",
     "bumpp": "bumpp -r",
-    "docs": "run-s build api-docs changelog"
+    "release": "run-s build api-docs changelog"
   },
   "dependencies": {
     "exceljs": ">= 4.x",
