@@ -28,6 +28,204 @@ Description
 
 
 </td></tr>
+<tr><td>
+
+[func()](./lib.func.md)
+
+
+</td><td>
+
+ 空函数
+
+
+</td></tr>
+<tr><td>
+
+[getFirstNotUndefinedValue(arr)](./lib.getfirstnotundefinedvalue.md)
+
+
+</td><td>
+
+获取数组中第一个值不为undefine的项
+
+
+</td></tr>
+<tr><td>
+
+[getPropByPath(obj, path, strict)](./lib.getpropbypath.md)
+
+
+</td><td>
+
+ 使用字符串点操作获取对象中属性
+
+
+</td></tr>
+<tr><td>
+
+[getValueByPath(object, prop)](./lib.getvaluebypath.md)
+
+
+</td><td>
+
+ 使用字符串点操作获取对象中的值
+
+
+</td></tr>
+<tr><td>
+
+[isArray(val)](./lib.isarray.md)
+
+
+</td><td>
+
+ 判断值是否为数组
+
+
+</td></tr>
+<tr><td>
+
+[isEmptyInput(val)](./lib.isemptyinput.md)
+
+
+</td><td>
+
+ 判断值是否是null\|undefined\|''
+
+
+</td></tr>
+<tr><td>
+
+[isEmptyObj(obj)](./lib.isemptyobj.md)
+
+
+</td><td>
+
+ 判断是否是空对象
+
+
+</td></tr>
+<tr><td>
+
+[isNull(val)](./lib.isnull.md)
+
+
+</td><td>
+
+ 判断值是否为null
+
+
+</td></tr>
+<tr><td>
+
+[isPlainObj(val)](./lib.isplainobj.md)
+
+
+</td><td>
+
+ 判断值是否为对象
+
+
+</td></tr>
+<tr><td>
+
+[isUndef(val)](./lib.isundef.md)
+
+
+</td><td>
+
+ 判断值是否是undefined
+
+
+</td></tr>
+<tr><td>
+
+[noInputEmptyInArr(arr)](./lib.noinputemptyinarr.md)
+
+
+</td><td>
+
+ 判断数组中不包含undefined '' null
+
+
+</td></tr>
+<tr><td>
+
+[realType(may)](./lib.realtype.md)
+
+
+</td><td>
+
+ 获取数据类型
+
+
+</td></tr>
+<tr><td>
+
+[realTypeEqual(may, type)](./lib.realtypeequal.md)
+
+
+</td><td>
+
+ 判断类型是否为 type
+
+
+</td></tr>
+<tr><td>
+
+[runFns(fns, args)](./lib.runfns.md)
+
+
+</td><td>
+
+ 执行多个同步函数
+
+
+</td></tr>
+<tr><td>
+
+[setIfNotUndef(data, key, value)](./lib.setifnotundef.md)
+
+
+</td><td>
+
+ 当值不为undefined时，将值赋值给data\[key\]
+
+
+</td></tr>
+<tr><td>
+
+[sid()](./lib.sid.md)
+
+
+</td><td>
+
+ 生成短的uuid
+
+
+</td></tr>
+<tr><td>
+
+[undefinedAndNotNullValueAsTrue(val)](./lib.undefinedandnotnullvalueastrue.md)
+
+
+</td><td>
+
+ 判断传入的数组的每一项或单个值是否为undefined\|!\['', null\].includes(val)
+
+
+</td></tr>
+<tr><td>
+
+[undefinedAndTrueAsTrue(val)](./lib.undefinedandtrueastrue.md)
+
+
+</td><td>
+
+ 判断传入的数组的每一项或单个值是否为undefined\|true
+
+
+</td></tr>
 </tbody></table>
 
 ## Interfaces

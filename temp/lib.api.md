@@ -5,6 +5,7 @@
 ```ts
 
 import { Cursor } from 'mongoose';
+import { default as default_2 } from 'short-uuid';
 import { Request as Request_2 } from 'express';
 import { Response as Response_2 } from 'express';
 
@@ -26,6 +27,22 @@ export interface ExcelStreamArs {
     zlibLevel?: number;
 }
 
+// @public
+export function func(): void;
+
+// @public
+export function getFirstNotUndefinedValue<T>(arr: any[]): T;
+
+// @public
+export function getPropByPath(obj: any, path: any, strict: any): {
+    o: any;
+    k: any;
+    v: any;
+};
+
+// @public
+export const getValueByPath: (object: any, prop: any) => any;
+
 // @public (undocumented)
 export interface Header {
     bgColor?: boolean | string;
@@ -37,6 +54,48 @@ export interface Header {
     title: string;
     width?: number;
 }
+
+// @public
+export function isArray(val: any): boolean;
+
+// @public
+export function isEmptyInput(val: string): boolean;
+
+// @public
+export function isEmptyObj(obj: unknown): boolean;
+
+// @public
+export function isNull(val: any): boolean;
+
+// @public
+export function isPlainObj(val: unknown): boolean;
+
+// @public
+export function isUndef(val: any): boolean;
+
+// @public
+export function noInputEmptyInArr(arr: any): boolean;
+
+// @public
+export function realType(may: any): any;
+
+// @public
+export function realTypeEqual(may: any, type: string): boolean;
+
+// @public
+export function runFns(fns?: any[], args?: any[]): void;
+
+// @public
+export function setIfNotUndef(data: {}, key: string, value: any): void;
+
+// @public
+export function sid(): default_2.SUUID;
+
+// @public
+export function undefinedAndNotNullValueAsTrue(val: string | any[]): boolean;
+
+// @public
+export function undefinedAndTrueAsTrue(val: boolean | any[]): boolean;
 
 // (No @packageDocumentation comment for this package)
 

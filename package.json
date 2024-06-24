@@ -1,7 +1,7 @@
 {
   "name": "@opennd/lib",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "author": "njzzzz",
   "repository": {
     "url": "https://github.com/njzzzz/-opennd-lib"
@@ -30,11 +30,11 @@
   "scripts": {
     "build": "vite build",
     "dev": "tsx watch ./playground.ts",
-    "docs": "api-extractor run --local && npx api-documenter markdown -i ./temp -o ./docs/docs/pages/Node",
+    "api-docs": "api-extractor run --local && npx api-documenter markdown -i ./temp -o ./docs/docs/pages/Node",
     "changelog": "conventional-changelog -i ./docs/docs/pages/Changelog/index.md -s -r 0",
     "publish": "pnpm publish --access=public --publish-branch main",
     "bumpp": "bumpp -r",
-    "release": "run-s build docs changelog bumpp publish"
+    "docs": "run-s build api-docs changelog"
   },
   "dependencies": {
     "exceljs": ">= 4.x",
