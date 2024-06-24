@@ -200,6 +200,7 @@ const userModel = mongoose.model('users', model)
 router.get('/excel', async (req, res) => {
   const cursor = userModel.find().skip(400000).limit(100).cursor()
   await excelCursorStream({
+    filename: '真是帅的表格',
     res,
     req,
     cursor,

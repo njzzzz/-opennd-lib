@@ -38,6 +38,10 @@ export interface Header {
 }
 export interface ExcelStreamArs {
   /**
+   * excel 文件名
+   */
+  filename: string
+  /**
    * express res
    * @description express 的 res
    */
@@ -114,10 +118,11 @@ export async function excelCursorStream({
   zlibLevel = 9,
   merges = [],
   cursor,
+  filename,
   width = 20,
 }: ExcelStreamArs) {
   res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
-  res.setHeader('Content-Disposition', 'attachment; filename=styled_sample.xlsx')
+  res.setHeader('Content-Disposition', `attachment; filename=${encodeURIComponent(filename)}.xlsx`)
   res.setHeader('Transfer-Encoding', 'chunked')
   dataHeaderIndex = dataHeaderIndex ?? headers.length - 1
   const dataHeader = headers[dataHeaderIndex]

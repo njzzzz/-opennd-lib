@@ -9,12 +9,13 @@ import { Request as Request_2 } from 'express';
 import { Response as Response_2 } from 'express';
 
 // @public
-export function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, width, }: ExcelStreamArs): Promise<void>;
+export function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, filename, width, }: ExcelStreamArs): Promise<void>;
 
 // @public (undocumented)
 export interface ExcelStreamArs {
     cursor: Cursor<any, any>;
     dataHeaderIndex?: number;
+    filename: string;
     headers: Header[][];
     merges?: string[];
     req: Request_2;

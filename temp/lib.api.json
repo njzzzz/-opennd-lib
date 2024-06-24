@@ -179,7 +179,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, width, }: "
+              "text": "export declare function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, filename, width, }: "
             },
             {
               "kind": "Reference",
@@ -213,7 +213,7 @@
           "overloadIndex": 1,
           "parameters": [
             {
-              "parameterName": "{ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, width, }",
+              "parameterName": "{ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, filename, width, }",
               "parameterTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
@@ -292,6 +292,33 @@
               "isOptional": true,
               "releaseTag": "Public",
               "name": "dataHeaderIndex",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!ExcelStreamArs#filename:member",
+              "docComment": "/**\n * excel 文件名\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "filename: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "filename",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
