@@ -11,7 +11,7 @@ export interface Header {
    */
   width?: number
   /**
-   * @description 表格列取值key
+   * @description 数值列取值key
    */
   dataIndex?: string
   /**
@@ -35,7 +35,7 @@ export interface Header {
    */
   horizontal?: ExcelJS.Alignment['horizontal']
   /**
-   * @description 标题列水平布局
+   * @description 表格标题列水平布局
    */
   headerHorizontal?: ExcelJS.Alignment['horizontal']
   /**
@@ -43,7 +43,7 @@ export interface Header {
    */
   vertical?: ExcelJS.Alignment['vertical']
   /**
-   * @description 标题列垂直布局
+   * @description 表格标题列垂直布局
    */
   headerVertical?: ExcelJS.Alignment['vertical']
   /**
@@ -51,7 +51,7 @@ export interface Header {
    */
   border?: boolean
   /**
-   * @description 表格标题是否带边框
+   * @description 表格标题列是否带边框
    */
   headerBorder?: boolean
   /**
@@ -63,7 +63,7 @@ export interface Header {
    */
   headerBgColor?: false | string
   /**
-   * @description 表格取值自定义,只对使用dataHeaderIndex指定的表头有效
+   * @description 表格数值列取值自定义,只对使用dataHeaderIndex指定的表头有效
    */
   renderCell?: <T>(data: T) => any
 }
