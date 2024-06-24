@@ -8,6 +8,8 @@ function genNavAndSidebar() {
     (navAndSidebar, path) => {
       const [_0, _1, text, link] = path.split(sep)
       const _link = link.replace('.md', '')
+      if (_link.startsWith('lib.'))
+        return navAndSidebar
       // nav 只要第一层
       navAndSidebar.nav[text] = navAndSidebar.nav[text]
         ? navAndSidebar.nav[text]
