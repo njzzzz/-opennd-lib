@@ -1,6 +1,5 @@
 import ExcelJS from 'exceljs'
 import type { Request, Response } from 'express'
-import type { Cursor } from 'mongoose'
 
 export interface Header {
   /**
@@ -67,7 +66,7 @@ export interface ExcelStreamArs {
   /**
    * @description mongoose cursor
    */
-  cursor: Cursor<any, any>
+  cursor: any
   /**
    * @description 使用第几个header取值,默认为 headers.length - 1
    */

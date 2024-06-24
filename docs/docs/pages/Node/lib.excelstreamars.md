@@ -43,7 +43,7 @@ Description
 
 </td><td>
 
-Cursor&lt;any, any&gt;
+any
 
 
 </td><td>

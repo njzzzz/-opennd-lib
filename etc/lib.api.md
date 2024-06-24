@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Cursor } from 'mongoose';
 import { default as default_2 } from 'short-uuid';
 import { Request as Request_2 } from 'express';
 import { Response as Response_2 } from 'express';
@@ -14,7 +13,7 @@ export function excelCursorStream({ req, res, headers, sheetName, dataHeaderInde
 
 // @public (undocumented)
 export interface ExcelStreamArs {
-    cursor: Cursor<any, any>;
+    cursor: any;
     dataHeaderIndex?: number;
     filename: string;
     headers: Header[][];

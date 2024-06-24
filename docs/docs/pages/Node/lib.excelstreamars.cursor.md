@@ -9,5 +9,5 @@
 **Signature:**
 
 ```typescript
-cursor: Cursor<any, any>;
+cursor: any;
 ```

@@ -248,13 +248,8 @@
                   "text": "cursor: "
                 },
                 {
-                  "kind": "Reference",
-                  "text": "Cursor",
-                  "canonicalReference": "!\"\\\"mongoose\\\"\".Cursor:class"
-                },
-                {
                   "kind": "Content",
-                  "text": "<any, any>"
+                  "text": "any"
                 },
                 {
                   "kind": "Content",
@@ -267,7 +262,7 @@
               "name": "cursor",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 3
+                "endIndex": 2
               }
             },
             {
@@ -753,7 +748,7 @@
               "text": "export interface Header "
             }
           ],
-          "fileUrlPath": "dist/lib/excel.d.ts",
+          "fileUrlPath": "lib/excel.ts",
           "releaseTag": "Public",
           "name": "Header",
           "preserveMemberOrder": false,
@@ -776,7 +771,6 @@
                   "text": ";"
                 }
               ],
-              "fileUrlPath": "lib/excel.ts",
               "isReadonly": false,
               "isOptional": true,
               "releaseTag": "Public",
@@ -885,7 +879,6 @@
                   "text": ";"
                 }
               ],
-              "fileUrlPath": "lib/excel.ts",
               "isReadonly": false,
               "isOptional": true,
               "releaseTag": "Public",

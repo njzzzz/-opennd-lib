@@ -12,11 +12,18 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./lib/*": [
-      "./lib/*",
-      "./lib/*/index.ts",
-      "./lib/*/index.tsx"
-    ]
+    "./lib/*": {
+      "types": [
+        "./dist/lib/*",
+        "./dist/lib/*.d.ts",
+        "./dist/lib/*/index.d.ts"
+      ],
+      "default": [
+        "./lib/*",
+        "./lib/*/index.ts",
+        "./lib/*/index.tsx"
+      ]
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
