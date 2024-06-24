@@ -4,6 +4,7 @@ export const external = [
   'exceljs',
   'express',
   'mongoose',
+  'short-uuid',
 ]
 
 export const commonBuildOptions: BuildOptions = {
