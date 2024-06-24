@@ -46,7 +46,7 @@
     "build": "vite build",
     "dev": "tsx watch ./playground.ts",
     "api-docs": "api-extractor run --local && npx api-documenter markdown -i ./temp -o ./docs/docs/pages/Node",
-    "changelog": "conventional-changelog -i ./docs/docs/pages/Changelog/index.md -s -r 0",
+    "changelog": "conventional-changelog -n changelog.config.mjs -i ./docs/docs/pages/Changelog/index.md -s -r 0",
     "publish": "pnpm publish --access=public --publish-branch main",
     "bumpp": "bumpp -r",
     "release": "run-s build api-docs changelog"

@@ -1,47 +1,28 @@
 ## <small>0.0.5 (2024-06-24)</small>
 
-* chore: gen docs and api ([dbc7e86](https://github.com/njzzzz/-opennd-lib/commit/dbc7e86))
-* chore: release v0.0.5 ([bea3676](https://github.com/njzzzz/-opennd-lib/commit/bea3676))
-* feat: 区分表格数值列和标题列的属性 ([4dd2a00](https://github.com/njzzzz/-opennd-lib/commit/4dd2a00))
+* feat: 区分表格数值列和标题列的属性 ([4dd2a00d612b42c99dc9ce2cfc3cdb80cf8be7dc](https://github.com/njzzzz/-opennd-lib/commit/4dd2a00d612b42c99dc9ce2cfc3cdb80cf8be7dc))
 
 
 
 ## <small>0.0.4 (2024-06-24)</small>
 
-* chore: changelog ([947182f](https://github.com/njzzzz/-opennd-lib/commit/947182f))
-* chore: release v0.0.4 ([65fe90a](https://github.com/njzzzz/-opennd-lib/commit/65fe90a))
-* fix: 修复低版本mongoose没有导出Cursor导致dts文件失效问题 ([8cf4ba3](https://github.com/njzzzz/-opennd-lib/commit/8cf4ba3))
+* fix: 修复低版本mongoose没有导出Cursor导致dts文件失效问题 ([8cf4ba3f499938ea1c896b1ab91a5b61ae67fdfd](https://github.com/njzzzz/-opennd-lib/commit/8cf4ba3f499938ea1c896b1ab91a5b61ae67fdfd))
 
 
 
 ## <small>0.0.3 (2024-06-24)</small>
 
-* chore: release v0.0.3 ([21af2d2](https://github.com/njzzzz/-opennd-lib/commit/21af2d2))
-* fix: 修复docs打包报错 ([359573e](https://github.com/njzzzz/-opennd-lib/commit/359573e))
+* fix: 修复docs打包报错 ([359573e86a5f9941c9ca99597e50e296f6c7b3d3](https://github.com/njzzzz/-opennd-lib/commit/359573e86a5f9941c9ca99597e50e296f6c7b3d3))
 
 
 
 ## <small>0.0.2 (2024-06-24)</small>
 
-* chore: add author ([1a8fcea](https://github.com/njzzzz/-opennd-lib/commit/1a8fcea))
-* chore: release v0.0.2 ([4f43c3b](https://github.com/njzzzz/-opennd-lib/commit/4f43c3b))
-* chore: release v0.0.2 ([770059f](https://github.com/njzzzz/-opennd-lib/commit/770059f))
-* chore: release v0.0.2 ([859c304](https://github.com/njzzzz/-opennd-lib/commit/859c304))
-* chore: release v0.0.2 ([cfa5d5d](https://github.com/njzzzz/-opennd-lib/commit/cfa5d5d))
-* chore: release v0.0.2 ([375eb22](https://github.com/njzzzz/-opennd-lib/commit/375eb22))
-* chore: release v0.0.2 ([df2cfd1](https://github.com/njzzzz/-opennd-lib/commit/df2cfd1))
-* chore: release v0.0.2 ([aba7fbc](https://github.com/njzzzz/-opennd-lib/commit/aba7fbc))
-* chore: release v0.0.2 ([899283d](https://github.com/njzzzz/-opennd-lib/commit/899283d))
-* chore: release v0.0.3 ([16d6c02](https://github.com/njzzzz/-opennd-lib/commit/16d6c02))
-* chore: 更新script名称 ([a267dac](https://github.com/njzzzz/-opennd-lib/commit/a267dac))
-* chore: 更新script名称 ([cedc6a5](https://github.com/njzzzz/-opennd-lib/commit/cedc6a5))
-* docs: misc ([9ecf8ac](https://github.com/njzzzz/-opennd-lib/commit/9ecf8ac))
-* docs: 增加说明 ([0d37ce0](https://github.com/njzzzz/-opennd-lib/commit/0d37ce0))
-* feat: excelCursorStream ([d7160ee](https://github.com/njzzzz/-opennd-lib/commit/d7160ee))
-* feat(excelCursorStream): 新增filename参数，指定excel名称 ([61d39de](https://github.com/njzzzz/-opennd-lib/commit/61d39de))
-* feat(excelCursorStream): 新增filename参数，指定excel名称 ([ec19415](https://github.com/njzzzz/-opennd-lib/commit/ec19415))
-* feat(utils): 新增utils ([4533a7b](https://github.com/njzzzz/-opennd-lib/commit/4533a7b))
-* release: 0.0.1 ([7a2f3fc](https://github.com/njzzzz/-opennd-lib/commit/7a2f3fc))
+* feat: excelCursorStream ([d7160ee6ad68c201d62f1dc61c760ea4bde53569](https://github.com/njzzzz/-opennd-lib/commit/d7160ee6ad68c201d62f1dc61c760ea4bde53569))
+* feat(excelCursorStream): 新增filename参数，指定excel名称 ([61d39dee08bdb7f1b1db1a367973fe41e1055aee](https://github.com/njzzzz/-opennd-lib/commit/61d39dee08bdb7f1b1db1a367973fe41e1055aee))
+* feat(excelCursorStream): 新增filename参数，指定excel名称 ([ec194152a31123b3ace2cd39492aafb3bbb0f706](https://github.com/njzzzz/-opennd-lib/commit/ec194152a31123b3ace2cd39492aafb3bbb0f706))
+* feat(utils): 新增utils ([4533a7bdaffdd75d2420a4a7d7660dc58c09633a](https://github.com/njzzzz/-opennd-lib/commit/4533a7bdaffdd75d2420a4a7d7660dc58c09633a))
+* release: 0.0.1 ([7a2f3fc11111f721484b2637f05e8be08e6a95f5](https://github.com/njzzzz/-opennd-lib/commit/7a2f3fc11111f721484b2637f05e8be08e6a95f5))
 
 
 
