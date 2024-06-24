@@ -1,3 +1,11 @@
+## <small>0.0.5 (2024-06-24)</small>
+
+* chore: gen docs and api ([dbc7e86](https://github.com/njzzzz/-opennd-lib/commit/dbc7e86))
+* chore: release v0.0.5 ([bea3676](https://github.com/njzzzz/-opennd-lib/commit/bea3676))
+* feat: 区分表格数值列和标题列的属性 ([4dd2a00](https://github.com/njzzzz/-opennd-lib/commit/4dd2a00))
+
+
+
 ## <small>0.0.4 (2024-06-24)</small>
 
 * chore: changelog ([947182f](https://github.com/njzzzz/-opennd-lib/commit/947182f))
