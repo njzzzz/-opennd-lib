@@ -4,7 +4,7 @@
 ```bash
 npm  i  @opennd/lib --save
 ```
-[API Docs](./docs/index.md)
+[API Docs](https://opennd-lib.pages.dev/pages/Node/lib.html)
 
 ## Example
 

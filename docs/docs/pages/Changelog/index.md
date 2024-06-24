@@ -1,3 +1,10 @@
+## <small>0.0.3 (2024-06-24)</small>
+
+* chore: release v0.0.3 ([21af2d2](https://github.com/njzzzz/-opennd-lib/commit/21af2d2))
+* fix: 修复docs打包报错 ([359573e](https://github.com/njzzzz/-opennd-lib/commit/359573e))
+
+
+
 ## <small>0.0.2 (2024-06-24)</small>
 
 * chore: add author ([1a8fcea](https://github.com/njzzzz/-opennd-lib/commit/1a8fcea))
