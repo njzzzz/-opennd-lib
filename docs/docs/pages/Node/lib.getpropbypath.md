@@ -9,9 +9,9 @@
 **Signature:**
 
 ```typescript
-export declare function getPropByPath(obj: any, path: any, strict: any): {
+export declare function getPropByPath(obj: any, path: string, strict: any): {
     o: any;
-    k: any;
+    k: string;
     v: any;
 };
 ```
@@ -55,7 +55,7 @@ path
 
 </td><td>
 
-any
+string
 
 
 </td><td>
@@ -79,9 +79,9 @@ any
 </tbody></table>
 **Returns:**
 
-{ o: any; k: any; v: any; }
+{ o: any; k: string; v: any; }
 
 ## Example
 
-getValueByPath(obj, 'a.b.c')
+getPropByPath(obj, 'a.b.c')
 

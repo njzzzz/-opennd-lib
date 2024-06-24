@@ -612,7 +612,7 @@
         {
           "kind": "Function",
           "canonicalReference": "@opennd/lib!getPropByPath:function(1)",
-          "docComment": "/**\n * @description 使用字符串点操作获取对象中属性\n *\n * @example\n *\n * getValueByPath(obj, 'a.b.c')\n */\n",
+          "docComment": "/**\n * @description 使用字符串点操作获取对象中属性\n *\n * @example\n *\n * getPropByPath(obj, 'a.b.c')\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -628,7 +628,7 @@
             },
             {
               "kind": "Content",
-              "text": "any"
+              "text": "string"
             },
             {
               "kind": "Content",
@@ -644,7 +644,7 @@
             },
             {
               "kind": "Content",
-              "text": "{\n    o: any;\n    k: any;\n    v: any;\n}"
+              "text": "{\n    o: any;\n    k: string;\n    v: any;\n}"
             },
             {
               "kind": "Content",
@@ -705,7 +705,7 @@
             },
             {
               "kind": "Content",
-              "text": "any"
+              "text": "string"
             },
             {
               "kind": "Content",

@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-getValueByPath: (object: any, prop: any) => any
+getValueByPath: (object: any, prop: string) => any
 ```
 
 ## Parameters
@@ -51,7 +51,7 @@ prop
 
 </td><td>
 
-any
+string
 
 
 </td><td>

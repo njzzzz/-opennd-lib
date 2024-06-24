@@ -79,7 +79,7 @@ export function isPlainObj(val: unknown) {
  * @description 使用字符串点操作获取对象中的值
  * @example getValueByPath(obj, 'a.b.c')
  */
-export const getValueByPath = function (object, prop) {
+export const getValueByPath = function (object: any, prop: string) {
   prop = prop || ''
   const paths = prop.split('.')
   let current = object
@@ -99,9 +99,9 @@ export const getValueByPath = function (object, prop) {
 }
 /**
  * @description 使用字符串点操作获取对象中属性
- * @example getValueByPath(obj, 'a.b.c')
+ * @example getPropByPath(obj, 'a.b.c')
  */
-export function getPropByPath(obj, path, strict) {
+export function getPropByPath(obj: any, path: string, strict: any) {
   let tempObj = obj
   path = path.replace(/\[(\w+)\]/g, '.$1')
   path = path.replace(/^\./, '')

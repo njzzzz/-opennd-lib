@@ -34,14 +34,14 @@ export function func(): void;
 export function getFirstNotUndefinedValue<T>(arr: any[]): T;
 
 // @public
-export function getPropByPath(obj: any, path: any, strict: any): {
+export function getPropByPath(obj: any, path: string, strict: any): {
     o: any;
-    k: any;
+    k: string;
     v: any;
 };
 
 // @public
-export const getValueByPath: (object: any, prop: any) => any;
+export const getValueByPath: (object: any, prop: string) => any;
 
 // @public (undocumented)
 export interface Header {

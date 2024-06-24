@@ -29,6 +29,9 @@ function genLink(text, name) {
 }
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  markdown: {
+    attrs: { disable: true },
+  },
   title: 'Node Library',
   description: 'Node 常用工具函数合集',
   /* prettier-ignore */
