@@ -214,7 +214,7 @@ export async function excelCursorStream({
     }))
     // 设置单行样式, index从1开始的
     row.eachCell((cell, index) => {
-      const { bold = false, size = 9, bgColor = false, border = true, horizontal = 'left', vertical = 'bottom' } = dataHeader[index - 1]
+      const { bold = false, size = 9, bgColor = false, border = true, horizontal = 'left', vertical = 'middle' } = dataHeader[index - 1]
       if (border) {
         cell.border = {
           top: { style: 'thin' },
