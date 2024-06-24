@@ -4,7 +4,7 @@
 
 ## Header.renderCell property
 
- 表格取值自定义
+ 表格取值自定义,只对使用dataHeaderIndex指定的表头有效
 
 **Signature:**
 

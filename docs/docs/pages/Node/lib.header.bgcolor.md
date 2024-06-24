@@ -4,10 +4,10 @@
 
 ## Header.bgColor property
 
- 表格列背景色
+ 表格标题列背景色 设置为false则不使用背景色
 
 **Signature:**
 
 ```typescript
-bgColor?: boolean | string;
+bgColor?: false | string;
 ```

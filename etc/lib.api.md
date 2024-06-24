@@ -4,7 +4,8 @@
 
 ```ts
 
-import { default as default_2 } from 'short-uuid';
+import { default as default_2 } from 'exceljs';
+import { default as default_3 } from 'short-uuid';
 import { Request as Request_2 } from 'express';
 import { Response as Response_2 } from 'express';
 
@@ -44,13 +45,21 @@ export const getValueByPath: (object: any, prop: string) => any;
 
 // @public (undocumented)
 export interface Header {
-    bgColor?: boolean | string;
+    bgColor?: false | string;
     bold?: boolean;
     border?: boolean;
     dataIndex?: string;
+    headerBgColor?: false | string;
+    headerBold?: boolean;
+    headerBorder?: boolean;
+    headerHorizontal?: default_2.Alignment['horizontal'];
+    headerSize?: number;
+    headerVertical?: default_2.Alignment['vertical'];
+    horizontal?: default_2.Alignment['horizontal'];
     renderCell?: <T>(data: T) => any;
     size?: number;
     title: string;
+    vertical?: default_2.Alignment['vertical'];
     width?: number;
 }
 
@@ -88,7 +97,7 @@ export function runFns(fns?: any[], args?: any[]): void;
 export function setIfNotUndef(data: {}, key: string, value: any): void;
 
 // @public
-export function sid(): default_2.SUUID;
+export function sid(): default_3.SUUID;
 
 // @public
 export function undefinedAndNotNullValueAsTrue(val: string | any[]): boolean;

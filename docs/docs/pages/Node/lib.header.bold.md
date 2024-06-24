@@ -4,7 +4,7 @@
 
 ## Header.bold property
 
- 表格标题字体是否加粗
+ 数值列字体是否加粗
 
 **Signature:**
 

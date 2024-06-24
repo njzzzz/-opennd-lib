@@ -4,7 +4,7 @@
 
 ## Header.border property
 
- 表格列是否带边框
+ 数值列是否带边框
 
 **Signature:**
 

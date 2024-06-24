@@ -4,7 +4,7 @@
 
 ## Header.size property
 
- 表格标题字体大小
+ 数值列字体大小
 
 **Signature:**
 

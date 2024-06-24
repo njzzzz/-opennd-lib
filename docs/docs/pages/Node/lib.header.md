@@ -43,12 +43,12 @@ Description
 
 </td><td>
 
-boolean \| string
+false \| string
 
 
 </td><td>
 
-_(Optional)_  表格列背景色
+_(Optional)_  表格标题列背景色 设置为false则不使用背景色
 
 
 </td></tr>
@@ -67,7 +67,7 @@ boolean
 
 </td><td>
 
-_(Optional)_  表格标题字体是否加粗
+_(Optional)_  数值列字体是否加粗
 
 
 </td></tr>
@@ -86,7 +86,7 @@ boolean
 
 </td><td>
 
-_(Optional)_  表格列是否带边框
+_(Optional)_  数值列是否带边框
 
 
 </td></tr>
@@ -111,6 +111,139 @@ _(Optional)_  表格列取值key
 </td></tr>
 <tr><td>
 
+[headerBgColor?](./lib.header.headerbgcolor.md)
+
+
+</td><td>
+
+
+</td><td>
+
+false \| string
+
+
+</td><td>
+
+_(Optional)_  表头背景色 设置为false则不使用背景色
+
+
+</td></tr>
+<tr><td>
+
+[headerBold?](./lib.header.headerbold.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_  表格标题字体是否加粗
+
+
+</td></tr>
+<tr><td>
+
+[headerBorder?](./lib.header.headerborder.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+_(Optional)_  表格标题是否带边框
+
+
+</td></tr>
+<tr><td>
+
+[headerHorizontal?](./lib.header.headerhorizontal.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ExcelJS.Alignment\['horizontal'\]
+
+
+</td><td>
+
+_(Optional)_  标题列水平布局
+
+
+</td></tr>
+<tr><td>
+
+[headerSize?](./lib.header.headersize.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_  表格标题列字体大小
+
+
+</td></tr>
+<tr><td>
+
+[headerVertical?](./lib.header.headervertical.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ExcelJS.Alignment\['vertical'\]
+
+
+</td><td>
+
+_(Optional)_  标题列垂直布局
+
+
+</td></tr>
+<tr><td>
+
+[horizontal?](./lib.header.horizontal.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ExcelJS.Alignment\['horizontal'\]
+
+
+</td><td>
+
+_(Optional)_  数值列水平布局
+
+
+</td></tr>
+<tr><td>
+
 [renderCell?](./lib.header.rendercell.md)
 
 
@@ -124,7 +257,7 @@ _(Optional)_  表格列取值key
 
 </td><td>
 
-_(Optional)_  表格取值自定义
+_(Optional)_  表格取值自定义,只对使用dataHeaderIndex指定的表头有效
 
 
 </td></tr>
@@ -143,7 +276,7 @@ number
 
 </td><td>
 
-_(Optional)_  表格标题字体大小
+_(Optional)_  数值列字体大小
 
 
 </td></tr>
@@ -163,6 +296,25 @@ string
 </td><td>
 
  表格列标题
+
+
+</td></tr>
+<tr><td>
+
+[vertical?](./lib.header.vertical.md)
+
+
+</td><td>
+
+
+</td><td>
+
+ExcelJS.Alignment\['vertical'\]
+
+
+</td><td>
+
+_(Optional)_  数值列垂直布局
 
 
 </td></tr>

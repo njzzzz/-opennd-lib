@@ -756,7 +756,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#bgColor:member",
-              "docComment": "/**\n * @description 表格列背景色\n */\n",
+              "docComment": "/**\n * @description 表格标题列背景色 设置为false则不使用背景色\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -764,7 +764,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "boolean | string"
+                  "text": "false | string"
                 },
                 {
                   "kind": "Content",
@@ -783,7 +783,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#bold:member",
-              "docComment": "/**\n * @description 表格标题字体是否加粗\n */\n",
+              "docComment": "/**\n * @description 数值列字体是否加粗\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -810,7 +810,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#border:member",
-              "docComment": "/**\n * @description 表格列是否带边框\n */\n",
+              "docComment": "/**\n * @description 数值列是否带边框\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -863,8 +863,212 @@
             },
             {
               "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#headerBgColor:member",
+              "docComment": "/**\n * @description 表头背景色 设置为false则不使用背景色\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "headerBgColor?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "false | string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "headerBgColor",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#headerBold:member",
+              "docComment": "/**\n * @description 表格标题字体是否加粗\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "headerBold?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "headerBold",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#headerBorder:member",
+              "docComment": "/**\n * @description 表格标题是否带边框\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "headerBorder?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "headerBorder",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#headerHorizontal:member",
+              "docComment": "/**\n * @description 标题列水平布局\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "headerHorizontal?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ExcelJS.Alignment",
+                  "canonicalReference": "exceljs!Alignment:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['horizontal']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "headerHorizontal",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#headerSize:member",
+              "docComment": "/**\n * @description 表格标题列字体大小\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "headerSize?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "headerSize",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#headerVertical:member",
+              "docComment": "/**\n * @description 标题列垂直布局\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "headerVertical?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ExcelJS.Alignment",
+                  "canonicalReference": "exceljs!Alignment:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['vertical']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "headerVertical",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#horizontal:member",
+              "docComment": "/**\n * @description 数值列水平布局\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "horizontal?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ExcelJS.Alignment",
+                  "canonicalReference": "exceljs!Alignment:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['horizontal']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "horizontal",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#renderCell:member",
-              "docComment": "/**\n * @description 表格取值自定义\n */\n",
+              "docComment": "/**\n * @description 表格取值自定义,只对使用dataHeaderIndex指定的表头有效\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -891,7 +1095,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#size:member",
-              "docComment": "/**\n * @description 表格标题字体大小\n */\n",
+              "docComment": "/**\n * @description 数值列字体大小\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -940,6 +1144,38 @@
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "@opennd/lib!Header#vertical:member",
+              "docComment": "/**\n * @description 数值列垂直布局\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "vertical?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ExcelJS.Alignment",
+                  "canonicalReference": "exceljs!Alignment:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "['vertical']"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "vertical",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
               }
             },
             {

@@ -1,3 +1,11 @@
+## <small>0.0.4 (2024-06-24)</small>
+
+* chore: changelog ([947182f](https://github.com/njzzzz/-opennd-lib/commit/947182f))
+* chore: release v0.0.4 ([65fe90a](https://github.com/njzzzz/-opennd-lib/commit/65fe90a))
+* fix: 修复低版本mongoose没有导出Cursor导致dts文件失效问题 ([8cf4ba3](https://github.com/njzzzz/-opennd-lib/commit/8cf4ba3))
+
+
+
 ## <small>0.0.3 (2024-06-24)</small>
 
 * chore: release v0.0.3 ([21af2d2](https://github.com/njzzzz/-opennd-lib/commit/21af2d2))
