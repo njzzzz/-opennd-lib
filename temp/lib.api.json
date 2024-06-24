@@ -837,7 +837,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#dataIndex:member",
-              "docComment": "/**\n * @description 表格列取值key\n */\n",
+              "docComment": "/**\n * @description 数值列取值key\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -918,7 +918,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#headerBorder:member",
-              "docComment": "/**\n * @description 表格标题是否带边框\n */\n",
+              "docComment": "/**\n * @description 表格标题列是否带边框\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -945,7 +945,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#headerHorizontal:member",
-              "docComment": "/**\n * @description 标题列水平布局\n */\n",
+              "docComment": "/**\n * @description 表格标题列水平布局\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1004,7 +1004,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#headerVertical:member",
-              "docComment": "/**\n * @description 标题列垂直布局\n */\n",
+              "docComment": "/**\n * @description 表格标题列垂直布局\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1068,7 +1068,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "@opennd/lib!Header#renderCell:member",
-              "docComment": "/**\n * @description 表格取值自定义,只对使用dataHeaderIndex指定的表头有效\n */\n",
+              "docComment": "/**\n * @description 表格数值列取值自定义,只对使用dataHeaderIndex指定的表头有效\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

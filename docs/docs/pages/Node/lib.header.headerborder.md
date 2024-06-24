@@ -4,7 +4,7 @@
 
 ## Header.headerBorder property
 
- 表格标题是否带边框
+ 表格标题列是否带边框
 
 **Signature:**
 

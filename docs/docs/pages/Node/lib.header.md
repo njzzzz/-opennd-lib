@@ -105,7 +105,7 @@ string
 
 </td><td>
 
-_(Optional)_  表格列取值key
+_(Optional)_  数值列取值key
 
 
 </td></tr>
@@ -162,7 +162,7 @@ boolean
 
 </td><td>
 
-_(Optional)_  表格标题是否带边框
+_(Optional)_  表格标题列是否带边框
 
 
 </td></tr>
@@ -181,7 +181,7 @@ ExcelJS.Alignment\['horizontal'\]
 
 </td><td>
 
-_(Optional)_  标题列水平布局
+_(Optional)_  表格标题列水平布局
 
 
 </td></tr>
@@ -219,7 +219,7 @@ ExcelJS.Alignment\['vertical'\]
 
 </td><td>
 
-_(Optional)_  标题列垂直布局
+_(Optional)_  表格标题列垂直布局
 
 
 </td></tr>
@@ -257,7 +257,7 @@ _(Optional)_  数值列水平布局
 
 </td><td>
 
-_(Optional)_  表格取值自定义,只对使用dataHeaderIndex指定的表头有效
+_(Optional)_  表格数值列取值自定义,只对使用dataHeaderIndex指定的表头有效
 
 
 </td></tr>

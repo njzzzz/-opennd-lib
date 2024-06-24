@@ -4,7 +4,7 @@
 
 ## Header.dataIndex property
 
- 表格列取值key
+ 数值列取值key
 
 **Signature:**
 

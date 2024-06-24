@@ -4,7 +4,7 @@
 
 ## Header.headerHorizontal property
 
- 标题列水平布局
+ 表格标题列水平布局
 
 **Signature:**
 
