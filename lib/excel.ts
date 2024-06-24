@@ -15,23 +15,55 @@ export interface Header {
    */
   dataIndex?: string
   /**
-   * @description 表格标题字体大小
+   * @description 数值列字体大小
    */
   size?: number
   /**
-   * @description 表格标题字体是否加粗
+   * @description 表格标题列字体大小
+   */
+  headerSize?: number
+  /**
+   * @description 数值列字体是否加粗
    */
   bold?: boolean
   /**
-   * @description 表格列是否带边框
+   * @description 表格标题字体是否加粗
+   */
+  headerBold?: boolean
+  /**
+   * @description 数值列水平布局
+   */
+  horizontal?: ExcelJS.Alignment['horizontal']
+  /**
+   * @description 标题列水平布局
+   */
+  headerHorizontal?: ExcelJS.Alignment['horizontal']
+  /**
+   * @description 数值列垂直布局
+   */
+  vertical?: ExcelJS.Alignment['vertical']
+  /**
+   * @description 标题列垂直布局
+   */
+  headerVertical?: ExcelJS.Alignment['vertical']
+  /**
+   * @description 数值列是否带边框
    */
   border?: boolean
   /**
-   * @description 表格列背景色
+   * @description 表格标题是否带边框
    */
-  bgColor?: boolean | string
+  headerBorder?: boolean
   /**
-   * @description 表格取值自定义
+   * @description 表格标题列背景色 设置为false则不使用背景色
+   */
+  bgColor?: false | string
+  /**
+   * @description 表头背景色 设置为false则不使用背景色
+   */
+  headerBgColor?: false | string
+  /**
+   * @description 表格取值自定义,只对使用dataHeaderIndex指定的表头有效
    */
   renderCell?: <T>(data: T) => any
 }
@@ -78,14 +110,14 @@ export interface ExcelStreamArs {
 }
 
 function getHeaderStyle(header: Partial<Header>) {
-  const { bold = true, size = 14, bgColor = 'D9D9D9', border = true } = header
+  const { headerBold = true, headerSize = 14, headerBgColor = 'D9D9D9', headerBorder = true, headerHorizontal = 'center', headerVertical = 'middle' } = header
   const style: Partial<ExcelJS.Column> = {}
   style.font = {
     name: '宋体',
-    size,
-    bold,
+    size: headerSize,
+    bold: headerBold,
   }
-  if (border) {
+  if (headerBorder) {
     style.border = {
       top: { style: 'thin' },
       left: { style: 'thin' },
@@ -94,15 +126,15 @@ function getHeaderStyle(header: Partial<Header>) {
     }
   }
 
-  if (typeof bgColor === 'string') {
+  if (headerBgColor !== false && typeof headerBgColor === 'string') {
     // 背景色
     style.fill = {
       type: 'pattern',
       pattern: 'solid',
-      fgColor: { argb: bgColor },
+      fgColor: { argb: headerBgColor },
     }
   }
-  style.alignment = { vertical: 'middle', horizontal: 'center' }
+  style.alignment = { vertical: headerVertical, horizontal: headerHorizontal }
   return style
 }
 /**
@@ -182,7 +214,7 @@ export async function excelCursorStream({
     }))
     // 设置单行样式, index从1开始的
     row.eachCell((cell, index) => {
-      const { bold = false, size = 9, bgColor = false, border = true } = dataHeader[index - 1]
+      const { bold = false, size = 9, bgColor = false, border = true, horizontal = 'left', vertical = 'bottom' } = dataHeader[index - 1]
       if (border) {
         cell.border = {
           top: { style: 'thin' },
@@ -196,7 +228,7 @@ export async function excelCursorStream({
         size,
         bold,
       }
-      if (typeof bgColor === 'string') {
+      if (bgColor !== false && typeof bgColor === 'string') {
         // 背景色
         cell.fill = {
           type: 'pattern',
@@ -204,7 +236,7 @@ export async function excelCursorStream({
           fgColor: { argb: bgColor },
         }
       }
-      cell.alignment = { vertical: 'middle', horizontal: 'center' }
+      cell.alignment = { vertical, horizontal }
     })
     row.commit()
   })

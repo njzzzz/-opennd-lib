@@ -12,16 +12,24 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./lib/*": {
+    "./*": {
       "types": [
-        "./dist/lib/*",
         "./dist/lib/*.d.ts",
         "./dist/lib/*/index.d.ts"
       ],
-      "default": [
-        "./lib/*",
-        "./lib/*/index.ts",
-        "./lib/*/index.tsx"
+      "import": [
+        "./dist/lib/*.js",
+        "./dist/lib/*/index.js"
+      ],
+      "require": [
+        "./dist/lib/*.cjs",
+        "./dist/lib/*/index.cjs"
+      ]
+    },
+    "./lib/*": {
+      "import": [
+        "./lib/*.ts",
+        "./lib/*/index.ts"
       ]
     }
   },
