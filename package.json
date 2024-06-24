@@ -1,7 +1,7 @@
 {
   "name": "@opennd/lib",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "njzzzz",
   "repository": {
     "url": "https://github.com/njzzzz/-opennd-lib"
