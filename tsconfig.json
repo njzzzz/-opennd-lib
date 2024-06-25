@@ -10,7 +10,7 @@
     "declarationMap": true
   },
   "include": [
-    "playground.ts",
+    "playground/**/*.ts",
     "lib/**/*.ts",
     "config/**/*.ts",
     "vite.config.ts",

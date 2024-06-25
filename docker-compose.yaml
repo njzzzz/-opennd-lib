@@ -1,0 +1,25 @@
+name: 'open-lib-prisma'
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: openlib
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: 12345678
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+  # 模拟线上库
+  mysql-prod:
+    image: mysql:5.7
+    ports:
+      - "33062:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: openlib
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: 12345678
+    volumes:
+      - ./mysql-data-prod:/var/lib/mysql

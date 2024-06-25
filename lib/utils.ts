@@ -97,6 +97,33 @@ export const getValueByPath = function (object: any, prop: string) {
   }
   return result
 }
+
+/**
+ * @description 使用字符串点操作获设置对象中属性, 中间不存在的属性值将被设为 {}
+ * @example setValueByPath(obj, 'a.b.c', 'value')
+ */
+export function setValueByPath(obj: any, path: string, value: any) {
+  let tempObj = obj
+  path = path.replace(/\[(\w+)\]/g, '.$1')
+  path = path.replace(/^\./, '')
+  const keyArr = path.split('.')
+  let i = 0
+  for (let len = keyArr.length; i <= len - 1; ++i) {
+    const key = keyArr[i]
+    if (len - 1 === i) {
+      // 终止
+      tempObj[key] = value
+    }
+    else if (key in tempObj) {
+      tempObj = tempObj[key]
+    }
+    else {
+      obj[key] = {}
+      tempObj = obj[key]
+    }
+  }
+  return obj
+}
 /**
  * @description 使用字符串点操作获取对象中属性
  * @example getPropByPath(obj, 'a.b.c')

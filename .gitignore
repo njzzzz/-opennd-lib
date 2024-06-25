@@ -1,2 +1,7 @@
 dist
 node_modules
+mysql-data
+prisma
+mysql-data-prod
+.env
+.env.prod
