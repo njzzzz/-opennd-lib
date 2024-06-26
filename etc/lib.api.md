@@ -67,22 +67,77 @@ export interface Header {
 export function isArray(val: any): boolean;
 
 // @public
-export function isEmptyInput(val: string): boolean;
+export function isEmptyInput(val: any): boolean;
 
 // @public
-export function isEmptyObj(obj: unknown): boolean;
+export function isEmptyObj(obj: any): boolean;
 
 // @public
 export function isNull(val: any): boolean;
 
 // @public
-export function isPlainObj(val: unknown): boolean;
+export function isPlainObj(val: any): boolean;
+
+// @public
+export function isStr(val: any): boolean;
 
 // @public
 export function isUndef(val: any): boolean;
 
 // @public
 export function noInputEmptyInArr(arr: any): boolean;
+
+// @public (undocumented)
+export type OPERATE = 'arrayType' | 'plainType' | 'dateType';
+
+// @public (undocumented)
+export class PrismaBuilder<T, TableFields = any> {
+    constructor(source?: T, query?: Record<string, any>);
+    // (undocumented)
+    ADD(fn: (t: this) => void): this;
+    assign: <RelationTableFields extends Record<string, any> = Record<string, any>>({ key, filter, idKey, joinOrGetKey, operate, }: {
+        key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;
+        joinOrGetKey?: string;
+        idKey?: keyof RelationTableFields;
+        filter?: BooleanConstructor | StringConstructor | NumberConstructor;
+        operate?: OPERATE;
+    }) => this;
+    contains: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, joinOrGetKey?: string) => this;
+    create(fn: (t: this) => void): Record<string, any>;
+    createRelation<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey: keyof RelationTableFields, filter: BooleanConstructor | StringConstructor | NumberConstructor, fn: (t: this) => any): this;
+    // (undocumented)
+    createTime(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>): this;
+    equals: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, joinOrGetKey?: string) => this;
+    // (undocumented)
+    in(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: string, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
+    // (undocumented)
+    NOT(fn: (t: this) => void): this;
+    // (undocumented)
+    notIn(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: string, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
+    // (undocumented)
+    OR(fn: (t: this) => void): this;
+    query(): Record<string, any>;
+    // (undocumented)
+    relationAnd<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: keyof RelationTableFields, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
+    // (undocumented)
+    relationNot<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: keyof RelationTableFields, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
+    // (undocumented)
+    relationOr<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: keyof RelationTableFields, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
+    // (undocumented)
+    set<RelationTableFields extends Record<string, any> = Record<string, any>>({ joinOrGetKey, cb, filter, idKey, key, type, }: {
+        key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;
+        idKey?: keyof RelationTableFields;
+        filter?: BooleanConstructor | StringConstructor | NumberConstructor;
+        joinOrGetKey?: string;
+        type: OPERATE;
+        cb: (query: any, k: string, val: any) => void;
+    }): this;
+    timeRange: ({ startTimeField, endTimeField, to }: {
+        startTimeField: keyof T;
+        endTimeField: keyof T;
+        to: keyof Omit<TableFields, 'NOT' | 'OR' | 'AND'>;
+    }) => this;
+}
 
 // @public
 export function realType(may: any): any;
@@ -95,6 +150,9 @@ export function runFns(fns?: any[], args?: any[]): void;
 
 // @public
 export function setIfNotUndef(data: {}, key: string, value: any): void;
+
+// @public
+export function setValueByPath(obj: any, path: string, value: any): any;
 
 // @public
 export function sid(): default_3.SUUID;

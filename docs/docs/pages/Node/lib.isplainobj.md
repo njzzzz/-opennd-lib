@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-export declare function isPlainObj(val: unknown): boolean;
+export declare function isPlainObj(val: any): boolean;
 ```
 
 ## Parameters
@@ -37,7 +37,7 @@ val
 
 </td><td>
 
-unknown
+any
 
 
 </td><td>

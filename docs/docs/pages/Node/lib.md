@@ -4,6 +4,30 @@
 
 ## lib package
 
+## Classes
+
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[PrismaBuilder](./lib.prismabuilder.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
 ## Functions
 
 <table><thead><tr><th>
@@ -129,6 +153,17 @@ Description
 </td></tr>
 <tr><td>
 
+[isStr(val)](./lib.isstr.md)
+
+
+</td><td>
+
+ 判断值是否是string
+
+
+</td></tr>
+<tr><td>
+
 [isUndef(val)](./lib.isundef.md)
 
 
@@ -195,6 +230,17 @@ Description
 </td></tr>
 <tr><td>
 
+[setValueByPath(obj, path, value)](./lib.setvaluebypath.md)
+
+
+</td><td>
+
+ 使用字符串点操作获设置对象中属性, 中间不存在的属性值将被设为 {<!-- -->}
+
+
+</td></tr>
+<tr><td>
+
 [sid()](./lib.sid.md)
 
 
@@ -253,6 +299,30 @@ Description
 <tr><td>
 
 [Header](./lib.header.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
+
+## Type Aliases
+
+<table><thead><tr><th>
+
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[OPERATE](./lib.operate.md)
 
 
 </td><td>

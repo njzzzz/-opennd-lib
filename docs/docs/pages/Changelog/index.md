@@ -1,3 +1,9 @@
+## <small>0.0.6 (2024-06-24)</small>
+
+* feat: 修改表格数据列默认为居中 ([f99165e60a95172652a6d586fe645eb63645ee91](https://github.com/njzzzz/-opennd-lib/commit/f99165e60a95172652a6d586fe645eb63645ee91))
+
+
+
 ## <small>0.0.5 (2024-06-24)</small>
 
 * feat: 区分表格数值列和标题列的属性 ([4dd2a00d612b42c99dc9ce2cfc3cdb80cf8be7dc](https://github.com/njzzzz/-opennd-lib/commit/4dd2a00d612b42c99dc9ce2cfc3cdb80cf8be7dc))

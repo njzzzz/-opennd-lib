@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-export declare function isEmptyObj(obj: unknown): boolean;
+export declare function isEmptyObj(obj: any): boolean;
 ```
 
 ## Parameters
@@ -37,7 +37,7 @@ obj
 
 </td><td>
 
-unknown
+any
 
 
 </td><td>

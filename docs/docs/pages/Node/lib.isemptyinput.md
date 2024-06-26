@@ -9,7 +9,7 @@
 **Signature:**
 
 ```typescript
-export declare function isEmptyInput(val: string): boolean;
+export declare function isEmptyInput(val: any): boolean;
 ```
 
 ## Parameters
@@ -37,7 +37,7 @@ val
 
 </td><td>
 
-string
+any
 
 
 </td><td>
