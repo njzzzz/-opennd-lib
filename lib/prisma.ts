@@ -1,13 +1,13 @@
-import { isArray, isEmptyInput, isPlainObj } from './utils'
+import { isArray, isEmptyInput, isPlainObj } from '@opennd/lib'
 
 export class PrismaBuilder<
 T,
 TableFields = any,
 > {
-  #query: Record<string, any> = {}
+  #query: any = {}
   #source: T
-  #createRelation: Record<string, any> = {}
-  #create: Record<string, any> = {}
+  #createRelation: any = {}
+  #create: any = {}
 
   /**
    * 切换合并模式INNER为正常的合并模式 combine， 剩余模式是合并模式会将值进行合并
@@ -30,12 +30,12 @@ TableFields = any,
     const startTimeVal = this.#source[startTimeField]
     const endTimeVal = this.#source[endTimeField]
     const query: Partial<{ ltg: T[keyof T], gte: T[keyof T] }> = {}
-    if (!isEmptyInput(startTimeVal)) {
+    if (!isEmptyInput(startTimeVal))
       query.ltg = startTimeVal
-    }
-    if (!isEmptyInput(endTimeVal)) {
+
+    if (!isEmptyInput(endTimeVal))
       query.gte = endTimeVal
-    }
+
     this.merge({
       [to]: query,
     })
@@ -294,19 +294,19 @@ TableFields = any,
   }
 
   private mergeCreateRelation(query) {
-    const { NOT = [], OR = [], AND = [] } = this.#query
+    const { NOT = [], OR = [], AND = [] } = this.#createRelation
     const has = Reflect.ownKeys(query).length
     switch (this.#mode) {
       case 'INNER':
-        this.#query = {
-          ...this.#query,
+        this.#createRelation = {
+          ...this.#createRelation,
           ...query,
         }
         break
       case 'NOT':
         if (has) {
-          this.#query = {
-            ...this.#query,
+          this.#createRelation = {
+            ...this.#createRelation,
             NOT: [
               ...NOT,
               query,
@@ -317,8 +317,8 @@ TableFields = any,
         break
       case 'OR':
         if (has) {
-          this.#query = {
-            ...this.#query,
+          this.#createRelation = {
+            ...this.#createRelation,
             OR: [
               ...OR,
               query,
@@ -327,8 +327,8 @@ TableFields = any,
         }
         break
       case 'AND':
-        this.#query = {
-          ...this.#query,
+        this.#createRelation = {
+          ...this.#createRelation,
           AND: [
             ...AND,
             query,
@@ -342,7 +342,7 @@ TableFields = any,
 
   private mergeCreate(query) {
     this.#create = {
-      ...this.#createRelation,
+      ...this.#create,
       ...query,
     }
   }
@@ -352,15 +352,14 @@ TableFields = any,
    */
   private merge(query) {
     // 合并创建逻辑
-    if (this.#mode === 'CREATE') {
+    if (this.#mode === 'CREATE')
       this.mergeCreate(query)
-    }
-    else if (this.#mode === 'CREATE_RELATION') {
+
+    else if (this.#mode === 'CREATE_RELATION')
       this.mergeCreateRelation(query)
-    }
-    else {
+
+    else
       this.mergeQuery(query)
-    }
   }
 
   /**
@@ -450,24 +449,24 @@ TableFields = any,
    */
   create(fn: (t: this) => void) {
     this.#mode = 'CREATE'
-    if (Reflect.ownKeys(this.#query).length) {
+    if (Reflect.ownKeys(this.#query).length)
       throw new Error('不可以在创建查询时使用create！')
-    }
+
     fn(this)
     this.#mode = 'INNER'
-    return this.#createRelation
+    return this.#create
   }
 
   private keys(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>) {
     let keys = null
     const query: Partial<Record<keyof T, { every: { in: any } } >> = {}
-    if (typeof key === 'string') {
+    if (typeof key === 'string')
       keys = [key]
-    }
+
     const isObj = isPlainObj(key)
-    if (isObj) {
+    if (isObj)
       keys = Object.keys(key)
-    }
+
     return { keys, isObj, query }
   }
 
@@ -555,7 +554,7 @@ TableFields = any,
   ) {
     if (!isEmptyInput(val)) {
       k = isObj ? key[k] : k
-      const newVal = new Date(val).toISOString
+      const newVal = new Date(val).toISOString()
       cb(k, newVal)
     }
   }
