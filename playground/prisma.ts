@@ -56,6 +56,7 @@ async function main() {
       data: {
         email: `${name}@email.com`,
         name,
+        Profile: { connect: { User: {} } },
       },
     })
     res.status(200).json({

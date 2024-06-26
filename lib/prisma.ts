@@ -6,6 +6,7 @@ TableFields = any,
 > {
   #query: Record<string, any> = {}
   #source: T
+  #createRelation: Record<string, any> = {}
 
   /**
    * 切换合并模式INNER为正常的合并模式 combine， 剩余模式是合并模式会将值进行合并
@@ -78,6 +79,38 @@ TableFields = any,
         query[k] = {
           equals: val,
         }
+      },
+    })
+    return this
+  }
+
+  /**
+   * @description 赋值
+   */
+  assign = <RelationTableFields extends Record<string, any> = Record<string, any>>(
+    {
+      key,
+      filter = Number,
+      idKey = 'id',
+      joinOrGetKey = ',',
+      operate = 'plainType',
+    }: {
+      key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      joinOrGetKey?: string
+      idKey?: keyof RelationTableFields
+      filter?: BooleanConstructor | StringConstructor | NumberConstructor
+      operate?: OPERATE
+    },
+
+  ) => {
+    this.set({
+      filter,
+      idKey,
+      key,
+      joinOrGetKey,
+      type: operate,
+      cb(query, k, val) {
+        query[k] = val
       },
     })
     return this
@@ -259,7 +292,11 @@ TableFields = any,
     }
   }
 
-  private mergeCreate() {
+  private mergeCreate(query) {
+    this.#createRelation = {
+      ...this.#createRelation,
+      ...query,
+    }
   }
 
   /**
@@ -268,11 +305,46 @@ TableFields = any,
   private merge(query) {
     // 合并创建逻辑
     if (this.#mode === 'CREATE') {
-
+      this.mergeCreate(query)
     }
     else {
       this.mergeQuery(query)
     }
+  }
+
+  createRelation<RelationTableFields extends Record<string, any> = Record<string, any>>(
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    idKey: keyof RelationTableFields = 'id',
+    filter: BooleanConstructor | StringConstructor | NumberConstructor = Number,
+    fn: (t: this) => any,
+  ) {
+    fn(this)
+    this.set({
+      filter,
+      idKey,
+      key,
+      type: 'arrayType',
+      cb: (query, k) => {
+        query[k] = {
+          connect: {
+            [idKey]: this.#createRelation,
+          },
+        }
+      },
+    })
+    this.#createRelation = {}
+    return this
+  }
+
+  createTime(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>) {
+    this.set({
+      key,
+      type: 'dateType',
+      cb(query, k, val) {
+        query[k] = val
+      },
+    })
+    return this
   }
 
   set<RelationTableFields extends Record<string, any> = Record<string, any>>(
@@ -289,7 +361,7 @@ TableFields = any,
       idKey?: keyof RelationTableFields
       filter?: BooleanConstructor | StringConstructor | NumberConstructor
       joinOrGetKey?: string
-      type: 'arrayType' | 'plainType'
+      type: OPERATE
       cb: (query: any, k: string, val: any) => void
     },
   ) {
@@ -320,7 +392,7 @@ TableFields = any,
   }
 
   /**
-   * @description 创建create data,不要用于查询条件的构建
+   * @description 创建create data,不要用于查询条件的构建, 回调函数中只能用create打头的函数
    */
   create(fn: (t: this) => void) {
     this.#mode = 'CREATE'
@@ -406,4 +478,31 @@ TableFields = any,
       cb(k, newVal)
     }
   }
+
+  /**
+   * 处理时间类型的值转为ISO
+   */
+  private dateType(
+    {
+      val,
+      cb,
+      isObj,
+      k,
+      key,
+    }: {
+      val: any
+      k: any
+      isObj: boolean
+      key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      joinOrGetKey: string
+      cb: (k: string, val: any) => void
+    },
+  ) {
+    if (!isEmptyInput(val)) {
+      k = isObj ? key[k] : k
+      const newVal = new Date(val).toISOString
+      cb(k, newVal)
+    }
+  }
 }
+export type OPERATE = 'arrayType' | 'plainType' | 'dateType'
