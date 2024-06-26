@@ -1,382 +1,409 @@
-import { isEmptyInput, isPlainObj } from './utils'
+import { isArray, isEmptyInput, isPlainObj } from './utils'
 
-export type GetPropType<T extends Record<string, any>, P extends string> = P extends `${infer L}.${infer R}` ? GetPropType<T[L], R> : T[P]
-const FILTER_SPLIT = '|'
-const PARAMS_SPLIT = ','
-export class PrismaQueryBuilder<T extends Record<string, any> = Record<string, any>, K extends string = Extract<keyof T, string>> {
-  query: Record<string, any> = {}
-  source: Record<string, any> = {}
-  constructor(source: Record<string, any> = {}, query: Record<string, any> = {}) {
-    this.source = source
-    this.query = query
+export class PrismaBuilder<
+T,
+TableFields = any,
+> {
+  #query: Record<string, any> = {}
+  #source: T
+
+  /**
+   * 切换合并模式INNER为正常的合并模式 combine， 剩余模式是合并模式会将值进行合并
+   */
+  #mode: 'INNER' | 'AND' | 'OR' | 'NOT' | 'CREATE' = 'INNER'
+  constructor(source: T = {} as T, query: Record<string, any> = {}) {
+    this.#source = source
+    this.#query = query
     return this
   }
 
   /**
-   * @description 核心函数
+   * @description 时间区间查询
    */
-  set = ({ keys = [], queryPipeline = [], filterPipeline = {} }: {
-    keys: K | K[] | []
-    queryPipeline: Pipeline[] | Pipeline
-    // eslint-disable-next-line ts/ban-types
-    filterPipeline?: Record<K, (filterPipeline | string & {})[] | filterPipeline> | object
+  timeRange = ({ startTimeField, endTimeField, to }: {
+    startTimeField: keyof T
+    endTimeField: keyof T
+    to: keyof Omit<TableFields, 'NOT' | 'OR' | 'AND'>
   }) => {
-    const { where = {} } = this.query
-    const conditions = this.core<Pipeline>({ keys, queryPipeline, filterPipeline })
-    // 处理参数
-    this.query = {
-      ...this.query,
-      where: {
-        ...where,
-        ...conditions,
-      },
+    const startTimeVal = this.#source[startTimeField]
+    const endTimeVal = this.#source[endTimeField]
+    const query: Partial<{ ltg: T[keyof T], gte: T[keyof T] }> = {}
+    if (!isEmptyInput(startTimeVal)) {
+      query.ltg = startTimeVal
     }
+    if (!isEmptyInput(endTimeVal)) {
+      query.gte = endTimeVal
+    }
+    this.merge({
+      [to]: query,
+    })
     return this
   }
 
   /**
-   * @description 统一处理 filterPipeline Pipeline
+   * @description like查询
+   * 数组类型的值会join，默认使用”,’拼接，可在自定义
    */
-  core = <P extends string>({ keys = [], queryPipeline = [], filterPipeline = {} }: {
-    keys: K | K[] | []
-    queryPipeline: P[] | P
-    // eslint-disable-next-line ts/ban-types
-    filterPipeline?: Record<K, (filterPipeline | string & {})[] | filterPipeline> | object
-  }) => {
-    keys = typeof keys === 'string' ? [keys] : keys
-    queryPipeline = typeof queryPipeline === 'string' ? [queryPipeline] : queryPipeline
-    return keys.reduce((acc: Record<string, any>, key: string) => {
-      const result = queryPipeline.reduce((data, operate) => {
-        const filter = filterPipeline[key] ?? []
-        const filters = typeof filter === 'string' ? [filter] : filter
-        // 解析filter
-        const filterFns = filters.map((filter = '') => {
-          const [filterName, params = ''] = filter.split(FILTER_SPLIT)
-          return (source: T, key: string) => {
-            // 调用filter, 并传入参数
-            return this[filterName](source, key, params.split(PARAMS_SPLIT))
-          }
-        })
-        const result = filterFns.reduce((data, filter) => {
-          // filter 传入的是从source取到的值
-          return filter ? filter(data, key) : data
-        }, this.source[key])
-        data[operate] = result
-        return data
-      }, {} as any)
-      // 处理重新赋值 reassign
-      if (Reflect.has(result, 'reassign')) {
-        acc[key] = result.reassign
-      }
-      else {
-        acc[key] = result
-      }
-      return acc
-    }, {})
-  }
-
-  /**
-   *
-   */
-  reassign = ({
-    key,
-    filterPipeline,
-  }: {
-    key: K
-    // eslint-disable-next-line ts/ban-types
-    filterPipeline: (filterPipeline | string & {})[] | filterPipeline | string & {}
-  }) => {
+  contains = (
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    joinOrGetKey: string = ',',
+  ) => {
     this.set({
-      keys: [key],
-      queryPipeline: ['reassign'],
-      filterPipeline: {
-        [key]: filterPipeline,
-      },
-    })
-    return this
-  }
-
-  /**
-   * @description contains 快捷操作
-   */
-  contains = ({ keys = [], filterPipeline = [] }: {
-    keys: K | K[]
-    // eslint-disable-next-line ts/ban-types
-    filterPipeline?: Record<K, (filterPipeline | string & {})[] | filterPipeline> | object
-  }) => {
-    keys = typeof keys === 'string' ? [keys] : keys
-    this.set({
-      keys,
-      queryPipeline: ['contains'],
-      filterPipeline,
-    })
-    return this
-  }
-
-  /**
-   * @description 时间区间查询 快捷操作
-   */
-  timeRange = ({ startTimeKey, endTimeKey, searchKey }: {
-    startTimeKey: K
-    endTimeKey: K
-    searchKey: string
-  }) => {
-    this.set({
-      keys: [startTimeKey] as any,
-      queryPipeline: ['lte'],
-      filterPipeline: { [startTimeKey]: ['ISODate'] },
-    })
-    this.set({
-      keys: [endTimeKey],
-      queryPipeline: ['gte'],
-      filterPipeline: { [endTimeKey]: ['ISODate'] },
-    })
-    this.AND({ keys: [startTimeKey, endTimeKey] })
-    this.mapKeys({
-      searhKeyMap: {
-        [startTimeKey]: searchKey,
-        [endTimeKey]: searchKey,
-      } as any,
-    })
-    return this
-  }
-
-  /**
-   * @description 时间区间查询 createAt 快捷操作
-   * - 默认值
-   * - startTimeKey 'startTime'
-   * - endTimeKey 'endTime'
-   * - searchKey 'createAt'
-   */
-  createAtTimeRange = () => {
-    this.timeRange({
-      startTimeKey: 'startTime' as any,
-      endTimeKey: 'endTime' as any,
-      searchKey: 'createAt' as any,
-    })
-    return this
-  }
-
-  mapKeys = ({ searhKeyMap }: { searhKeyMap: Partial<Record<K, string>> }) => {
-    const { where = {} } = this.query
-    const { AND = [], OR = [], NOT = [] } = where
-    const arr = [...AND, ...NOT, ...OR]
-    Object.keys(searhKeyMap).forEach((oldKey) => {
-      const newKey = searhKeyMap[oldKey]
-      if (!isEmptyInput(where[oldKey])) {
-        where[newKey] = where[oldKey] ?? null
-        delete where?.[oldKey]
-      }
-      // 修改 AND = [], OR = [], NOT = [] 的键
-      arr.forEach((item) => {
-        if (!isEmptyInput(item[oldKey])) {
-          item[newKey] = item[oldKey] ?? null
-          delete item?.[oldKey]
+      key,
+      joinOrGetKey,
+      type: 'plainType',
+      cb(query, k, val) {
+        query[k] = {
+          contains: val,
         }
-      })
+      },
+
     })
     return this
   }
 
   /**
-   * @description 组合参数为and 快捷操作
+   * @description 全等
    */
-  AND = ({ keys = [] }: { keys: K[] }) => {
-    this.combine({ keys, combine: 'AND' })
+
+  equals = (
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    joinOrGetKey: string = ',',
+  ) => {
+    this.set({
+      key,
+      joinOrGetKey,
+      type: 'plainType',
+      cb(query, k, val) {
+        query[k] = {
+          equals: val,
+        }
+      },
+    })
+    return this
+  }
+
+  relationOr<RelationTableFields extends Record<string, any> = Record<string, any>>(
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    idKey: keyof RelationTableFields = 'id',
+    filter: BooleanConstructor | StringConstructor | NumberConstructor = Number,
+  ) {
+    this.set({
+      filter,
+      idKey,
+      key,
+      type: 'arrayType',
+      cb: (query, k, val) => {
+        query[k] = {
+          some: {
+            [idKey]: val,
+          },
+        }
+      },
+    })
+    return this
+  }
+
+  relationAnd<RelationTableFields extends Record<string, any> = Record<string, any>>(
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    idKey: keyof RelationTableFields = 'id',
+    filter: BooleanConstructor | StringConstructor | NumberConstructor = Number,
+  ) {
+    this.set({
+      filter,
+      idKey,
+      key,
+      type: 'arrayType',
+      cb: (query, k, val) => {
+        query[k] = {
+          every: {
+            [idKey]: val,
+          },
+        }
+      },
+    })
+    return this
+  }
+
+  relationNot<RelationTableFields extends Record<string, any> = Record<string, any>>(
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    idKey: keyof RelationTableFields = 'id',
+    filter: BooleanConstructor | StringConstructor | NumberConstructor = Number,
+  ) {
+    this.set({
+      filter,
+      idKey,
+      key,
+      type: 'arrayType',
+      cb: (query, k, val) => {
+        query[k] = {
+          none: {
+            [idKey]: val,
+          },
+        }
+      },
+    })
+    return this
+  }
+
+  in(
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    idKey: string = 'id',
+    filter: BooleanConstructor | StringConstructor | NumberConstructor = Number,
+  ) {
+    this.set({
+      filter,
+      idKey,
+      key,
+      type: 'arrayType',
+      cb: (query, k, val) => {
+        query[k] = {
+          in: val,
+        }
+      },
+    })
+    return this
+  }
+
+  notIn(
+    key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
+    idKey: string = 'id',
+    filter: BooleanConstructor | StringConstructor | NumberConstructor = Number,
+  ) {
+    this.set({
+      filter,
+      idKey,
+      key,
+      type: 'arrayType',
+      cb: (query, k, val) => {
+        query[k] = {
+          notIn: val,
+        }
+      },
+    })
+    return this
+  }
+
+  ADD(fn: (t: this) => void) {
+    this.#mode = 'AND'
+    fn(this)
+    this.#mode = 'INNER'
+    return this
+  }
+
+  NOT(fn: (t: this) => void) {
+    this.#mode = 'NOT'
+    fn(this)
+    this.#mode = 'INNER'
+    return this
+  }
+
+  OR(fn: (t: this) => void) {
+    this.#mode = 'OR'
+    fn(this)
+    this.#mode = 'INNER'
     return this
   }
 
   /**
-   * @description 组合参数为or 快捷操作
+   * 获取查询
    */
-  OR = ({ keys = [] }: { keys: K[] }) => {
-    this.combine({ keys, combine: 'OR' })
+  query() {
+    return this.#query
+  }
+
+  private mergeQuery(query) {
+    const { NOT = [], OR = [], AND = [] } = this.#query
+    const has = Reflect.ownKeys(query).length
+    switch (this.#mode) {
+      case 'INNER':
+        this.#query = {
+          ...this.#query,
+          ...query,
+        }
+        break
+      case 'NOT':
+        if (has) {
+          this.#query = {
+            ...this.#query,
+            NOT: [
+              ...NOT,
+              query,
+            ],
+          }
+        }
+
+        break
+      case 'OR':
+        if (has) {
+          this.#query = {
+            ...this.#query,
+            OR: [
+              ...OR,
+              query,
+            ],
+          }
+        }
+        break
+      case 'AND':
+        this.#query = {
+          ...this.#query,
+          AND: [
+            ...AND,
+            query,
+          ],
+        }
+        break
+      default:
+        break
+    }
+  }
+
+  private mergeCreate() {
+  }
+
+  /**
+   * 此处定义merge的策略
+   */
+  private merge(query) {
+    // 合并创建逻辑
+    if (this.#mode === 'CREATE') {
+
+    }
+    else {
+      this.mergeQuery(query)
+    }
+  }
+
+  set<RelationTableFields extends Record<string, any> = Record<string, any>>(
+    {
+      joinOrGetKey = ',',
+      cb,
+      filter = Number,
+      idKey = 'id',
+      key,
+      type,
+    }:
+    {
+      key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      idKey?: keyof RelationTableFields
+      filter?: BooleanConstructor | StringConstructor | NumberConstructor
+      joinOrGetKey?: string
+      type: 'arrayType' | 'plainType'
+      cb: (query: any, k: string, val: any) => void
+    },
+  ) {
+    const {
+      keys,
+      isObj,
+      query,
+    } = this.keys(key)
+    const finalKeys = keys || key
+    finalKeys.forEach((k) => {
+      const val = this.#source[k]
+      this[type]({
+        val,
+        filter,
+        idKey,
+        joinOrGetKey,
+        k,
+        isObj,
+        key,
+        cb: (...args) => {
+          cb(query, ...args)
+        },
+      },
+      )
+    })
+    this.merge(query)
     return this
   }
 
   /**
-   * @description 组合参数为not 快捷操作
+   * @description 创建create data,不要用于查询条件的构建
    */
-  NOT = ({ keys = [] }: { keys: K[] }) => {
-    this.combine({ keys, combine: 'NOT' })
-    return this
+  create(fn: (t: this) => void) {
+    this.#mode = 'CREATE'
+    if (Reflect.ownKeys(this.#query).length) {
+      throw new Error('不可以在创建查询时使用create！')
+    }
+    fn(this)
+    this.#mode = 'INNER'
   }
 
-  /**
-   * @description 组合参数为
-   * 组合参数不会被覆盖只会累加
-   */
-  combine = ({ keys = [], combine = 'AND' }: { keys: K[], combine?: Combine }) => {
-    const { where = {} } = this.query
-    const { combines, other } = Object.keys(where).reduce((acc, key: any) => {
-      if (keys.includes(key)) {
-        acc.combines.push({
-          [key]: where[key],
-        })
+  private keys(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>) {
+    let keys = null
+    const query: Partial<Record<keyof T, { every: { in: any } } >> = {}
+    if (typeof key === 'string') {
+      keys = [key]
+    }
+    const isObj = isPlainObj(key)
+    if (isObj) {
+      keys = Object.keys(key)
+    }
+    return { keys, isObj, query }
+  }
+
+  private arrayType<RelationTableFields extends Record<string, any> = Record<string, any>>(
+    {
+      val,
+      filter,
+      idKey = 'id',
+      isObj,
+      k,
+      key,
+      cb,
+    }: {
+      val: any
+      filter: NumberConstructor | StringConstructor | BooleanConstructor
+      idKey: keyof RelationTableFields
+      k: any
+      isObj: boolean
+      key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      cb: (k: string, val: any) => void
+    },
+  ) {
+    if (!isEmptyInput(val) && val.length) {
+      if (typeof val === 'string') {
+        val = val.split(',').map(id => filter(id))
+      }
+      else if (isPlainObj(val[0])) {
+        // 值不为对象
+        val = val.map(item => filter(item[idKey]))
       }
       else {
-        acc.other[key] = where[key]
+        val = val.map(id => filter(id))
       }
-      return acc
-    }, { combines: [], other: {} })
-    const _combine = where[combine] ?? []
-    this.query = {
-      where: {
-        ...other,
-        [combine]: [..._combine, ...combines],
-      },
+      k = isObj ? key[k] : k
+      cb(k, val)
     }
-    return this
+    return { val, k }
   }
 
   /**
-   * @description 多值查询 OR
+   * 处理原始类型的值， 如果是数组会拼接， 对象需要指定joinOrGetKey来取值
    */
-  multipleRelationOR = ({ keys = [] }: {
-    keys: K | K[] | []
-  }) => {
-    const { where = {} } = this.query
-    const { OR = [] } = where
-    keys = typeof keys === 'string' ? [keys] : keys
-    const _OR = keys.map((key) => {
-      const values = where[key] ?? []
-      delete where[key]
-      return {
-        [key]: {
-          some: {
-            OR: values,
-          },
-        },
-      }
-    })
-    this.query = {
-      ...this.query,
-      where: {
-        ...where,
-        OR: [
-          ...OR,
-          ..._OR,
-        ],
-      },
+  private plainType(
+    {
+      val,
+      joinOrGetKey = ',',
+      cb,
+      isObj,
+      k,
+      key,
+    }: {
+      val: any
+      k: any
+      isObj: boolean
+      key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      joinOrGetKey: string
+      cb: (k: string, val: any) => void
+    },
+  ) {
+    if (!isEmptyInput(val)) {
+      k = isObj ? key[k] : k
+      const newVal = isArray(val) ? val.join(joinOrGetKey) : isPlainObj(val) ? val[joinOrGetKey] : val
+      cb(k, newVal)
     }
-    return this
-  }
-
-  /**
-   * @description 多值查询 AND
-   */
-  multipleAND = ({ keys = [] }: {
-    keys: K | K[] | []
-  }) => {
-    const { where = {} } = this.query
-    const { AND = [] } = where
-    keys = typeof keys === 'string' ? [keys] : keys
-    const _AND = keys.map((key) => {
-      const values = where[key] ?? []
-      delete where[key]
-      return {
-        [key]: {
-          every: {
-            AND: values,
-          },
-        },
-      }
-    })
-    this.query = {
-      ...this.query,
-      where: {
-        ...where,
-        AND: [
-          ...AND,
-          ..._AND,
-        ],
-      },
-    }
-    return this
-  }
-
-  /**
-   * @description 多值查询 NOT
-   */
-  multipleNOT = ({ keys = [] }: {
-    keys: K | K[] | []
-  }) => {
-    const { where = {} } = this.query
-    const { NOT = [] } = where
-    keys = typeof keys === 'string' ? [keys] : keys
-    const _NOT = keys.map((key) => {
-      const values = where[key] ?? []
-      delete where[key]
-      return {
-        [key]: {
-          every: {
-            NOT: values,
-          },
-        },
-      }
-    })
-    this.query = {
-      ...this.query,
-      where: {
-        ...where,
-        NOT: [
-          ...NOT,
-          ..._NOT,
-        ],
-      },
-    }
-    return this
-  }
-
-  end = () => {
-    return this.query.where
-  }
-
-  // 以下为filter
-  /**
-   * @description map filter filterPipeline: ['map|key1,key2']
-   * 数组取值, 参数为需要map的键
-   */
-  map = (source: Record<string, any>[], key: string, keys: any[]) => {
-    return source.map(item => keys.reduce((acc, k) => {
-      acc[k] = item[k]
-      return acc
-    }, {}))
-  }
-
-  /**
-   * @description map filter filterPipeline: ['mapId']
-   * 数组取值返回id 无参数
-   */
-  mapId = (source: Record<string, any>[]) => {
-    return source.map(item => item.id, {})
-  }
-
-  /**
-   * @description map filter filterPipeline: ['mapPickOne|id']
-   * 只接受一个参数
-   */
-  mapPickOne = (source: Record<string, any>[], key: string, keys: any[]) => {
-    return source.map(item => item[keys[0]] || null)
-  }
-
-  ISODate = (source: string) => {
-    return isEmptyInput(source) ? null : new Date(source).toISOString()
-  }
-
-  /**
-   * @description 将数组单个值转为对象 filterPipeline: ['mapToObj|id']
-   */
-  mapToObj(source: Record<string, any>[], key: string, keys: any[]) {
-    return source.map((item) => {
-      return keys.reduce((acc, key) => {
-        acc[key] = item
-        return acc
-      }, {})
-    })
   }
 }
-
-export type Pipeline = 'lte' | 'gte' | 'lt' | 'gt' | 'contains' | 'endsWith' | 'equals' | 'in' | 'not' | 'notIn' | 'startWith' | 'reassign'
-export type filterPipeline = 'map' | 'mapId' | 'mapPickOne' | 'mapToObj'
-export type Combine = 'OR' | 'AND' | 'NOT'

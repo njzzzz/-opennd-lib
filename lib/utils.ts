@@ -46,9 +46,15 @@ export function realTypeEqual(may: any, type: string) {
   return realType(may) === `[object ${type}]`
 }
 /**
+ * @description 判断值是否是string
+ */
+export function isStr(val: any) {
+  return typeof val === 'string'
+}
+/**
  * @description 判断值是否是null|undefined|''
  */
-export function isEmptyInput(val: string) {
+export function isEmptyInput(val: any) {
   return [null, undefined, ''].includes(val)
 }
 /**
@@ -72,7 +78,7 @@ export function isArray(val: any) {
 /**
  * @description 判断值是否为对象
  */
-export function isPlainObj(val: unknown) {
+export function isPlainObj(val: any) {
   return realTypeEqual(val, 'Object')
 }
 /**
@@ -164,7 +170,7 @@ export function runFns(fns = [], args = []) {
 /**
  * @description 判断是否是空对象
  */
-export function isEmptyObj(obj: unknown) {
+export function isEmptyObj(obj: any) {
   return isPlainObj(obj) && Reflect.ownKeys(obj as object).length === 0
 }
 /**

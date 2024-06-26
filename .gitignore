@@ -5,3 +5,4 @@ prisma
 mysql-data-prod
 .env
 .env.prod
+http

@@ -129,8 +129,6 @@
 // }
 import { PassThrough } from 'node:stream'
 import mongoose, { Schema, connect } from 'mongoose'
-import type { CellObject } from 'xlsx-js-style'
-import XLSX from 'xlsx-js-style'
 import express, { NextFunction, Router } from 'express'
 import ExcelJS from 'exceljs'
 import { excelCursorStream } from '@/excel'
