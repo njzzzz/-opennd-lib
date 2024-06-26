@@ -1,3 +1,12 @@
+## <small>0.0.7 (2024-06-26)</small>
+
+* feat: add PrismaBuilder ([74d29f651571d1f76b9c98a9469de042d67ce07e](https://github.com/njzzzz/-opennd-lib/commit/74d29f651571d1f76b9c98a9469de042d67ce07e))
+* feat: add PrismaBuilder ([fb70858f35828c694072c8b0d87a835bbea593ae](https://github.com/njzzzz/-opennd-lib/commit/fb70858f35828c694072c8b0d87a835bbea593ae))
+* feat: add PrismaQueryBuilder ([c92e3b3110b02eedd87e93ffa4314f4e9e15227a](https://github.com/njzzzz/-opennd-lib/commit/c92e3b3110b02eedd87e93ffa4314f4e9e15227a))
+* feat: PrismaBuilder 新增create模式 ([9eb101d793f02a665560570bb72d8dbe4d0c50f4](https://github.com/njzzzz/-opennd-lib/commit/9eb101d793f02a665560570bb72d8dbe4d0c50f4))
+
+
+
 ## <small>0.0.6 (2024-06-24)</small>
 
 * feat: 修改表格数据列默认为居中 ([f99165e60a95172652a6d586fe645eb63645ee91](https://github.com/njzzzz/-opennd-lib/commit/f99165e60a95172652a6d586fe645eb63645ee91))
