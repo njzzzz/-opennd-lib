@@ -7,11 +7,12 @@ TableFields = any,
   #query: Record<string, any> = {}
   #source: T
   #createRelation: Record<string, any> = {}
+  #create: Record<string, any> = {}
 
   /**
    * 切换合并模式INNER为正常的合并模式 combine， 剩余模式是合并模式会将值进行合并
    */
-  #mode: 'INNER' | 'AND' | 'OR' | 'NOT' | 'CREATE' = 'INNER'
+  #mode: 'INNER' | 'AND' | 'OR' | 'NOT' | 'CREATE' | 'CREATE_RELATION' = 'INNER'
   constructor(source: T = {} as T, query: Record<string, any> = {}) {
     this.#source = source
     this.#query = query
@@ -292,8 +293,55 @@ TableFields = any,
     }
   }
 
+  private mergeCreateRelation(query) {
+    const { NOT = [], OR = [], AND = [] } = this.#query
+    const has = Reflect.ownKeys(query).length
+    switch (this.#mode) {
+      case 'INNER':
+        this.#query = {
+          ...this.#query,
+          ...query,
+        }
+        break
+      case 'NOT':
+        if (has) {
+          this.#query = {
+            ...this.#query,
+            NOT: [
+              ...NOT,
+              query,
+            ],
+          }
+        }
+
+        break
+      case 'OR':
+        if (has) {
+          this.#query = {
+            ...this.#query,
+            OR: [
+              ...OR,
+              query,
+            ],
+          }
+        }
+        break
+      case 'AND':
+        this.#query = {
+          ...this.#query,
+          AND: [
+            ...AND,
+            query,
+          ],
+        }
+        break
+      default:
+        break
+    }
+  }
+
   private mergeCreate(query) {
-    this.#createRelation = {
+    this.#create = {
       ...this.#createRelation,
       ...query,
     }
@@ -307,11 +355,17 @@ TableFields = any,
     if (this.#mode === 'CREATE') {
       this.mergeCreate(query)
     }
+    else if (this.#mode === 'CREATE_RELATION') {
+      this.mergeCreateRelation(query)
+    }
     else {
       this.mergeQuery(query)
     }
   }
 
+  /**
+   * 创建 connect
+   */
   createRelation<RelationTableFields extends Record<string, any> = Record<string, any>>(
     key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
     idKey: keyof RelationTableFields = 'id',
@@ -401,6 +455,7 @@ TableFields = any,
     }
     fn(this)
     this.#mode = 'INNER'
+    return this.#createRelation
   }
 
   private keys(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>) {
