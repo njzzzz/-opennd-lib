@@ -24,14 +24,14 @@ TableFields = any,
     endTimeField: keyof T
     to: keyof Omit<TableFields, 'NOT' | 'OR' | 'AND'>
   }) => {
-    const startTimeVal = this.#source[startTimeField]
-    const endTimeVal = this.#source[endTimeField]
-    const query: Partial<{ lte: T[keyof T], gte: T[keyof T] }> = {}
+    const startTimeVal = this.#source[startTimeField] as Date
+    const endTimeVal = this.#source[endTimeField] as Date
+    const query: Partial<{ lte: string, gte: string }> = {}
     if (!isEmptyInput(startTimeVal))
-      query.lte = startTimeVal
+      query.lte = new Date(startTimeVal).toISOString()
 
     if (!isEmptyInput(endTimeVal))
-      query.gte = endTimeVal
+      query.gte = new Date(endTimeVal).toISOString()
 
     this.merge({
       [to]: query,
