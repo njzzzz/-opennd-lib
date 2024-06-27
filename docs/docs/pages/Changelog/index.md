@@ -1,3 +1,9 @@
+## <small>0.0.11 (2024-06-27)</small>
+
+* fix: PrismaQueryBuilder  timeRange add toISOString ([8f29d833ef720a1e759ed39f070df3ffb4c1809b](https://github.com/njzzzz/-opennd-lib/commit/8f29d833ef720a1e759ed39f070df3ffb4c1809b))
+
+
+
 ## <small>0.0.10 (2024-06-27)</small>
 
 * fix: ltg => lte ([d24fd19ff1f0ac86a79557b6b62b6e4c82553c93](https://github.com/njzzzz/-opennd-lib/commit/d24fd19ff1f0ac86a79557b6b62b6e4c82553c93))
