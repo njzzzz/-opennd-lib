@@ -26,9 +26,9 @@ TableFields = any,
   }) => {
     const startTimeVal = this.#source[startTimeField]
     const endTimeVal = this.#source[endTimeField]
-    const query: Partial<{ ltg: T[keyof T], gte: T[keyof T] }> = {}
+    const query: Partial<{ lte: T[keyof T], gte: T[keyof T] }> = {}
     if (!isEmptyInput(startTimeVal))
-      query.ltg = startTimeVal
+      query.lte = startTimeVal
 
     if (!isEmptyInput(endTimeVal))
       query.gte = endTimeVal
