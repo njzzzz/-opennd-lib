@@ -154,8 +154,8 @@ TableFields = any,
       type: 'arrayType',
       cb: (query, k, val) => {
         query[k] = {
-          some: {
-            [itemGet]: val,
+          [itemGet]: {
+            in: val,
           },
         }
       },
@@ -184,9 +184,7 @@ TableFields = any,
       type: 'arrayType',
       cb: (query, k, val) => {
         query[k] = {
-          every: {
-            [itemGet]: val,
-          },
+          AND: val.map(v => ({ [itemGet]: { in: [v] } })),
         }
       },
     })
@@ -214,8 +212,8 @@ TableFields = any,
       type: 'arrayType',
       cb: (query, k, val) => {
         query[k] = {
-          none: {
-            [itemGet]: val,
+          [itemGet]: {
+            notIn: val,
           },
         }
       },
