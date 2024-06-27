@@ -19,7 +19,16 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[PrismaBuilder](./lib.prismabuilder.md)
+[PrismaCreateBuilder](./lib.prismacreatebuilder.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[PrismaQueryBuilder](./lib.prismaquerybuilder.md)
 
 
 </td><td>
@@ -322,7 +331,25 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[OPERATE](./lib.operate.md)
+[CreateOperate](./lib.createoperate.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Filter](./lib.filter.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Operate](./lib.operate.md)
 
 
 </td><td>

@@ -173,6 +173,32 @@
       "preserveMemberOrder": false,
       "members": [
         {
+          "kind": "TypeAlias",
+          "canonicalReference": "@opennd/lib!CreateOperate:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CreateOperate = "
+            },
+            {
+              "kind": "Content",
+              "text": "'arrayType' | 'plainType' | 'dateType' | 'relationQueryType'"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/prisma.ts",
+          "releaseTag": "Public",
+          "name": "CreateOperate",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
           "kind": "Function",
           "canonicalReference": "@opennd/lib!excelCursorStream:function(1)",
           "docComment": "/**\n * @description express mongodb 流式导出 excel\n */\n",
@@ -517,6 +543,55 @@
             }
           ],
           "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@opennd/lib!Filter:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type Filter = "
+            },
+            {
+              "kind": "Reference",
+              "text": "BooleanConstructor",
+              "canonicalReference": "!BooleanConstructor:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "StringConstructor",
+              "canonicalReference": "!StringConstructor:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "NumberConstructor",
+              "canonicalReference": "!NumberConstructor:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | null"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "lib/prisma.ts",
+          "releaseTag": "Public",
+          "name": "Filter",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
         },
         {
           "kind": "Function",
@@ -1570,12 +1645,12 @@
         },
         {
           "kind": "TypeAlias",
-          "canonicalReference": "@opennd/lib!OPERATE:type",
+          "canonicalReference": "@opennd/lib!Operate:type",
           "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export type OPERATE = "
+              "text": "export type Operate = "
             },
             {
               "kind": "Content",
@@ -1588,7 +1663,7 @@
           ],
           "fileUrlPath": "lib/prisma.ts",
           "releaseTag": "Public",
-          "name": "OPERATE",
+          "name": "Operate",
           "typeTokenRange": {
             "startIndex": 1,
             "endIndex": 2
@@ -1596,12 +1671,12 @@
         },
         {
           "kind": "Class",
-          "canonicalReference": "@opennd/lib!PrismaBuilder:class",
+          "canonicalReference": "@opennd/lib!PrismaCreateBuilder:class",
           "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare class PrismaBuilder<T, TableFields = "
+              "text": "export declare class PrismaCreateBuilder<T, TableFields = "
             },
             {
               "kind": "Content",
@@ -1639,13 +1714,629 @@
             }
           ],
           "isAbstract": false,
-          "name": "PrismaBuilder",
+          "name": "PrismaCreateBuilder",
           "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Constructor",
-              "canonicalReference": "@opennd/lib!PrismaBuilder:constructor(1)",
-              "docComment": "/**\n * Constructs a new instance of the `PrismaBuilder` class\n */\n",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `PrismaCreateBuilder` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(source?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", create?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "source",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                },
+                {
+                  "parameterName": "create",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#arrayToString:member(1)",
+              "docComment": "/**\n * @description 创建字符数组类型\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "arrayToString(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", params?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        join?: string;\n        get?: string;\n        itemGet?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 11,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "params",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 7,
+                    "endIndex": 10
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "arrayToString"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#assign:member",
+              "docComment": "/**\n * @description 赋值,直接赋值，如果key对应的值为对象可配置get进行取值\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "assign: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        itemGet?: keyof RelationTableFields;\n        operate?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CreateOperate",
+                  "canonicalReference": "@opennd/lib!CreateOperate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "assign",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#create:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "create: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "create",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#relation:member",
+              "docComment": "/**\n * @description 创建关联\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relation: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        itemGet?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relation",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 8
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#relationMany:member",
+              "docComment": "/**\n * @description 创建多个关联，支持条件\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationMany: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType = any, RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        itemGet?: keyof RelationTableFields;\n    }, cb?: (builder: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PrismaQueryBuilder",
+                  "canonicalReference": "@opennd/lib!PrismaQueryBuilder:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType, RelationTableFields>>) => any) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationMany",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#set:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "set: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        get?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        join?: string;\n        itemGet?: keyof RelationTableFields;\n        type: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CreateOperate",
+                  "canonicalReference": "@opennd/lib!CreateOperate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        builder?: (t: any) => any;\n        cb: (query: any, k: string, val: any) => void;\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "set",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "@opennd/lib!PrismaCreateBuilder#time:member(1)",
+              "docComment": "/**\n * @description 创建时间类型\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "time(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", params?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        get?: string;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 9,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "params",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 7,
+                    "endIndex": 8
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "time"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "@opennd/lib!PrismaQueryBuilder:class",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class PrismaQueryBuilder<T, TableFields = "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": "> "
+            }
+          ],
+          "fileUrlPath": "lib/prisma.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TableFields",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "isAbstract": false,
+          "name": "PrismaQueryBuilder",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `PrismaQueryBuilder` class\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1696,57 +2387,39 @@
               ]
             },
             {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#ADD:member(1)",
-              "docComment": "",
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#ADD:member",
+              "docComment": "/**\n * @description 生成组合条件AND\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "ADD(fn: "
+                  "text": "ADD: "
                 },
                 {
                   "kind": "Content",
-                  "text": "(t: this) => void"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
+                  "text": "(fn: (t: this) => void) => this"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "fn",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
+              "isReadonly": false,
               "isOptional": false,
-              "isAbstract": false,
-              "name": "ADD"
+              "releaseTag": "Public",
+              "name": "ADD",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
             },
             {
               "kind": "Property",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#assign:member",
-              "docComment": "/**\n * @description 赋值\n */\n",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#assign:member",
+              "docComment": "/**\n * @description 赋值,直接赋值，如果key对应的值为对象可配置get进行取值\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1772,7 +2445,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<string, any>>({ key, filter, idKey, joinOrGetKey, operate, }: {\n        key: keyof T | (keyof T)[] | "
+                  "text": "<string, any>>(key: keyof T | (keyof T)[] | "
                 },
                 {
                   "kind": "Reference",
@@ -1790,39 +2463,21 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        joinOrGetKey?: string;\n        idKey?: keyof RelationTableFields;\n        filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
                 },
                 {
                   "kind": "Content",
-                  "text": " | "
+                  "text": ";\n        itemGet?: keyof RelationTableFields;\n        operate?: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        operate?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "OPERATE",
-                  "canonicalReference": "@opennd/lib!OPERATE:type"
+                  "text": "Operate",
+                  "canonicalReference": "@opennd/lib!Operate:type"
                 },
                 {
                   "kind": "Content",
@@ -1839,7 +2494,7 @@
               "name": "assign",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 18
+                "endIndex": 14
               },
               "isStatic": false,
               "isProtected": false,
@@ -1847,7 +2502,7 @@
             },
             {
               "kind": "Property",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#contains:member",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#contains:member",
               "docComment": "/**\n * @description like查询 数组类型的值会join，默认使用”,’拼接，可在自定义\n */\n",
               "excerptTokens": [
                 {
@@ -1874,7 +2529,16 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, joinOrGetKey?: string) => this"
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
                 },
                 {
                   "kind": "Content",
@@ -1887,306 +2551,15 @@
               "name": "contains",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 6
+                "endIndex": 8
               },
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
             },
             {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#create:member(1)",
-              "docComment": "/**\n * @description 创建create data,不要用于查询条件的构建, 回调函数中只能用create打头的函数\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "create(fn: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(t: this) => void"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 5
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "fn",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "create"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#createRelation:member(1)",
-              "docComment": "/**\n * 创建 connect\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "createRelation<RelationTableFields extends "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">(key: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", idKey: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof RelationTableFields"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", filter: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", fn: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(t: this) => any"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "RelationTableFields",
-                  "constraintTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  }
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 23,
-                "endIndex": 24
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 12
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "idKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 13,
-                    "endIndex": 14
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "filter",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 15,
-                    "endIndex": 20
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "fn",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 21,
-                    "endIndex": 22
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "createRelation"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#createTime:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "createTime(key: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 7,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 6
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "createTime"
-            },
-            {
               "kind": "Property",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#equals:member",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#equals:member",
               "docComment": "/**\n * @description 全等\n */\n",
               "excerptTokens": [
                 {
@@ -2213,7 +2586,16 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, joinOrGetKey?: string) => this"
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
                 },
                 {
                   "kind": "Content",
@@ -2226,24 +2608,24 @@
               "name": "equals",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 6
+                "endIndex": 8
               },
               "isStatic": false,
               "isProtected": false,
               "isAbstract": false
             },
             {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#in:member(1)",
-              "docComment": "",
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#in:member",
+              "docComment": "/**\n * @description in 查询\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "in(key: "
+                  "text": "in: "
                 },
                 {
                   "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
+                  "text": "(key: keyof T | (keyof T)[] | "
                 },
                 {
                   "kind": "Reference",
@@ -2261,955 +2643,493 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", idKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
                 },
                 {
                   "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
+                  "text": ";\n        itemGet?: string;\n    }) => this"
                 },
                 {
                   "kind": "Content",
                   "text": ";"
                 }
               ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 15,
-                "endIndex": 16
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 6
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "idKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 8
-                  },
-                  "isOptional": true
-                },
-                {
-                  "parameterName": "filter",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 9,
-                    "endIndex": 14
-                  },
-                  "isOptional": true
-                }
-              ],
+              "isReadonly": false,
               "isOptional": false,
-              "isAbstract": false,
-              "name": "in"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#NOT:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "NOT(fn: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(t: this) => void"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
               "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "fn",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "NOT"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#notIn:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "notIn(key: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", idKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "string"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", filter?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 15,
-                "endIndex": 16
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 6
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "idKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 8
-                  },
-                  "isOptional": true
-                },
-                {
-                  "parameterName": "filter",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 9,
-                    "endIndex": 14
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "notIn"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#OR:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "OR(fn: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "(t: this) => void"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 3,
-                "endIndex": 4
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "fn",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 2
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "OR"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#query:member(1)",
-              "docComment": "/**\n * 获取查询\n */\n",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "query(): "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
+              "name": "in",
+              "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 3
+                "endIndex": 8
               },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "query"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#relationAnd:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "relationAnd<RelationTableFields extends "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">(key: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", idKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof RelationTableFields"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", filter?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "RelationTableFields",
-                  "constraintTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  }
-                }
-              ],
               "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 21,
-                "endIndex": 22
-              },
-              "releaseTag": "Public",
               "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 12
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "idKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 13,
-                    "endIndex": 14
-                  },
-                  "isOptional": true
-                },
-                {
-                  "parameterName": "filter",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 15,
-                    "endIndex": 20
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "relationAnd"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#relationNot:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "relationNot<RelationTableFields extends "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">(key: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", idKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof RelationTableFields"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", filter?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "RelationTableFields",
-                  "constraintTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  }
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 21,
-                "endIndex": 22
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 12
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "idKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 13,
-                    "endIndex": 14
-                  },
-                  "isOptional": true
-                },
-                {
-                  "parameterName": "filter",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 15,
-                    "endIndex": 20
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "relationNot"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#relationOr:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "relationOr<RelationTableFields extends "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">(key: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", idKey?: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "keyof RelationTableFields"
-                },
-                {
-                  "kind": "Content",
-                  "text": ", filter?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "RelationTableFields",
-                  "constraintTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  }
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 21,
-                "endIndex": 22
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "key",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 12
-                  },
-                  "isOptional": false
-                },
-                {
-                  "parameterName": "idKey",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 13,
-                    "endIndex": 14
-                  },
-                  "isOptional": true
-                },
-                {
-                  "parameterName": "filter",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 15,
-                    "endIndex": 20
-                  },
-                  "isOptional": true
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "relationOr"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#set:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "set<RelationTableFields extends "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": " = "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<string, any>"
-                },
-                {
-                  "kind": "Content",
-                  "text": ">({ joinOrGetKey, cb, filter, idKey, key, type, }: "
-                },
-                {
-                  "kind": "Content",
-                  "text": "{\n        key: keyof T | (keyof T)[] | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Partial",
-                  "canonicalReference": "!Partial:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<"
-                },
-                {
-                  "kind": "Reference",
-                  "text": "Record",
-                  "canonicalReference": "!Record:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n        filter?: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "BooleanConstructor",
-                  "canonicalReference": "!BooleanConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "StringConstructor",
-                  "canonicalReference": "!StringConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": " | "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "NumberConstructor",
-                  "canonicalReference": "!NumberConstructor:interface"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        joinOrGetKey?: string;\n        type: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "OPERATE",
-                  "canonicalReference": "@opennd/lib!OPERATE:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";\n        cb: (query: any, k: string, val: any) => void;\n    }"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "this"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "RelationTableFields",
-                  "constraintTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 4,
-                    "endIndex": 6
-                  }
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 21,
-                "endIndex": 22
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "{ joinOrGetKey, cb, filter, idKey, key, type, }",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 7,
-                    "endIndex": 20
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "set"
+              "isAbstract": false
             },
             {
               "kind": "Property",
-              "canonicalReference": "@opennd/lib!PrismaBuilder#timeRange:member",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#NOT:member",
+              "docComment": "/**\n * @description 生成组合条件NOT\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "NOT: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(fn: (t: this) => void) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "NOT",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#notIn:member",
+              "docComment": "/**\n * @description notIn 查询\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "notIn: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        join?: string;\n        itemGet?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "notIn",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 8
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#OR:member",
+              "docComment": "/**\n * @description 生成组合条件OR\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "OR: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(fn: (t: this) => void) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "OR",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#query:member",
+              "docComment": "/**\n * @description 获取查询条件\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "query: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "query",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationAnd:member",
+              "docComment": "/**\n * @description 关联查询 every，满足所有条件\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationAnd: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        itemGet?: keyof RelationTableFields;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationAnd",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 12
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationNot:member",
+              "docComment": "/**\n * @description 关联查询 none，排除所有\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationNot: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        itemGet?: keyof RelationTableFields;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationNot",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 12
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationOr:member",
+              "docComment": "/**\n * @description 关联查询 some，满足其中一个条件即可\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationOr: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        itemGet?: keyof RelationTableFields;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationOr",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 12
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#set:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "set: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        get?: string;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        join?: string;\n        itemGet?: keyof RelationTableFields;\n        type: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Operate",
+                  "canonicalReference": "@opennd/lib!Operate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        cb: (query: any, k: string, val: any) => void;\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "set",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#timeRange:member",
               "docComment": "/**\n * @description 时间区间查询\n */\n",
               "excerptTokens": [
                 {

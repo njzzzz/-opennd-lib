@@ -1,3 +1,10 @@
+## <small>0.0.8 (2024-06-27)</small>
+
+* feat: add PrismaQueryBuilder PrismaCreateBuilder ([c5ffb47f15c74b0a64af3c98145ba35afa550cc7](https://github.com/njzzzz/-opennd-lib/commit/c5ffb47f15c74b0a64af3c98145ba35afa550cc7))
+* fix: create api ([42a5be3363d71cb5291eaab8bbe4657640086ac3](https://github.com/njzzzz/-opennd-lib/commit/42a5be3363d71cb5291eaab8bbe4657640086ac3))
+
+
+
 ## <small>0.0.7 (2024-06-26)</small>
 
 * feat: add PrismaBuilder ([74d29f651571d1f76b9c98a9469de042d67ce07e](https://github.com/njzzzz/-opennd-lib/commit/74d29f651571d1f76b9c98a9469de042d67ce07e))

@@ -9,6 +9,9 @@ import { default as default_3 } from 'short-uuid';
 import { Request as Request_2 } from 'express';
 import { Response as Response_2 } from 'express';
 
+// @public (undocumented)
+export type CreateOperate = 'arrayType' | 'plainType' | 'dateType' | 'relationQueryType';
+
 // @public
 export function excelCursorStream({ req, res, headers, sheetName, dataHeaderIndex, zlibLevel, merges, cursor, filename, width, }: ExcelStreamArs): Promise<void>;
 
@@ -26,6 +29,9 @@ export interface ExcelStreamArs {
     width?: number;
     zlibLevel?: number;
 }
+
+// @public (undocumented)
+export type Filter = BooleanConstructor | StringConstructor | NumberConstructor | null;
 
 // @public
 export function func(): void;
@@ -88,50 +94,112 @@ export function isUndef(val: any): boolean;
 export function noInputEmptyInArr(arr: any): boolean;
 
 // @public (undocumented)
-export type OPERATE = 'arrayType' | 'plainType' | 'dateType';
+export type Operate = 'arrayType' | 'plainType' | 'dateType';
 
 // @public (undocumented)
-export class PrismaBuilder<T, TableFields = any> {
-    constructor(source?: T, query?: Record<string, any>);
-    // (undocumented)
-    ADD(fn: (t: this) => void): this;
-    assign: <RelationTableFields extends Record<string, any> = Record<string, any>>({ key, filter, idKey, joinOrGetKey, operate, }: {
-        key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;
-        joinOrGetKey?: string;
-        idKey?: keyof RelationTableFields;
-        filter?: BooleanConstructor | StringConstructor | NumberConstructor;
-        operate?: OPERATE;
-    }) => this;
-    contains: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, joinOrGetKey?: string) => this;
-    create(fn: (t: this) => void): Record<string, any>;
-    createRelation<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey: keyof RelationTableFields, filter: BooleanConstructor | StringConstructor | NumberConstructor, fn: (t: this) => any): this;
-    // (undocumented)
-    createTime(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>): this;
-    equals: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, joinOrGetKey?: string) => this;
-    // (undocumented)
-    in(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: string, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
-    // (undocumented)
-    NOT(fn: (t: this) => void): this;
-    // (undocumented)
-    notIn(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: string, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
-    // (undocumented)
-    OR(fn: (t: this) => void): this;
-    query(): Record<string, any>;
-    // (undocumented)
-    relationAnd<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: keyof RelationTableFields, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
-    // (undocumented)
-    relationNot<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: keyof RelationTableFields, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
-    // (undocumented)
-    relationOr<RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, idKey?: keyof RelationTableFields, filter?: BooleanConstructor | StringConstructor | NumberConstructor): this;
-    // (undocumented)
-    set<RelationTableFields extends Record<string, any> = Record<string, any>>({ joinOrGetKey, cb, filter, idKey, key, type, }: {
-        key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;
-        idKey?: keyof RelationTableFields;
-        filter?: BooleanConstructor | StringConstructor | NumberConstructor;
-        joinOrGetKey?: string;
-        type: OPERATE;
-        cb: (query: any, k: string, val: any) => void;
+export class PrismaCreateBuilder<T, TableFields = any> {
+    constructor(source?: T, create?: Record<string, any>);
+    arrayToString(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        join?: string;
+        get?: string;
+        itemGet?: string;
+        filter?: Filter;
     }): this;
+    assign: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        join?: string;
+        get?: string;
+        filter?: Filter;
+        itemGet?: keyof RelationTableFields;
+        operate?: CreateOperate;
+    }) => this;
+    // (undocumented)
+    create: () => any;
+    relation: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        join?: string;
+        get?: string;
+        itemGet?: string;
+        filter?: Filter;
+    }) => this;
+    relationMany: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
+        key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
+        itemGet?: keyof RelationTableFields;
+    }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
+    // (undocumented)
+    set: <RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
+        key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;
+        get?: string;
+        filter?: Filter;
+        join?: string;
+        itemGet?: keyof RelationTableFields;
+        type: CreateOperate;
+        builder?: (t: any) => any;
+        cb: (query: any, k: string, val: any) => void;
+    }) => this;
+    time(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+    }): this;
+}
+
+// @public (undocumented)
+export class PrismaQueryBuilder<T, TableFields = any> {
+    constructor(source?: T, query?: Record<string, any>);
+    ADD: (fn: (t: this) => void) => this;
+    assign: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        join?: string;
+        get?: string;
+        filter?: Filter;
+        itemGet?: keyof RelationTableFields;
+        operate?: Operate;
+    }) => this;
+    contains: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        join?: string;
+        get?: string;
+        filter?: Filter;
+    }) => this;
+    equals: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        join?: string;
+        get?: string;
+        filter?: Filter;
+    }) => this;
+    in: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+        filter?: Filter;
+        itemGet?: string;
+    }) => this;
+    NOT: (fn: (t: this) => void) => this;
+    notIn: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+        join?: string;
+        itemGet?: string;
+        filter?: Filter;
+    }) => this;
+    OR: (fn: (t: this) => void) => this;
+    query: () => any;
+    relationAnd: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+        itemGet?: keyof RelationTableFields;
+        filter?: Filter;
+    }) => this;
+    relationNot: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+        itemGet?: keyof RelationTableFields;
+        filter?: Filter;
+    }) => this;
+    relationOr: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+        itemGet?: keyof RelationTableFields;
+        filter?: Filter;
+    }) => this;
+    // (undocumented)
+    set: <RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
+        key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;
+        get?: string;
+        filter?: Filter;
+        join?: string;
+        itemGet?: keyof RelationTableFields;
+        type: Operate;
+        cb: (query: any, k: string, val: any) => void;
+    }) => this;
     timeRange: ({ startTimeField, endTimeField, to }: {
         startTimeField: keyof T;
         endTimeField: keyof T;
