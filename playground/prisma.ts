@@ -2,7 +2,7 @@ import type { Prisma } from '@prisma/client'
 import { PrismaClient } from '@prisma/client'
 import express from 'express'
 import bodyParser from 'body-parser'
-import { PrismaBuilder } from '@/prisma'
+import { PrismaCreateBuilder, PrismaQueryBuilder } from '@/prisma'
 
 const source = {
   startTime: '2020/01/01',
@@ -10,38 +10,73 @@ const source = {
   name: '1',
   idsstr: '1,2,3,4',
   ids: [1, 2, 3, 4],
+  relation: 1,
+  relations: [1, 2, 3, 4],
+  relationStrings: '1,2,3,4',
+  relationMaps: [{ id: 1, name: 'qqq' }],
   sub: {
-    name: 'subName',
+    email: 'email@email.com',
   },
 }
-const query = new PrismaBuilder<typeof source, Prisma.UserWhereInput>(source)
-  .timeRange({
-    endTimeField: 'endTime',
-    startTimeField: 'startTime',
-    to: 'createAt',
+// const query = new PrismaQueryBuilder<typeof source, Prisma.UserWhereInput>(source)
+//   .timeRange({
+//     endTimeField: 'endTime',
+//     startTimeField: 'startTime',
+//     to: 'createAt',
+//   })
+//   .contains(['startTime'])
+//   .contains({
+//     name: 'profileId',
+//   })
+//   .relationOr<{ data: number }>({ ids: 'Profile' }, { itemGet: 'data' })
+//   .relationOr<{ id: number }>({ ids: 'email' }, { itemGet: 'id' })
+//   .relationAnd(['ids', 'idsstr'])
+//   .in({
+//     ids: 'name',
+//   })
+//   .notIn({ ids: 'updateAt' })
+//   .ADD((builer) => {
+//     builer
+//       .contains('ids')
+//       .in('ids')
+//       .relationOr('ids')
+//       .contains({ sub: 'OR' }, {
+//         get: 'name',
+//       })
+//   })
+//   .query()
+type Source = typeof source
+type Sub = Source['relationMaps'][number]
+const create = new PrismaCreateBuilder<Source, Prisma.UserWhereInput>(source)
+  .relationMany({ key: 'relations' })
+  .relationMany({ key: 'relationStrings' })
+  .relationMany<Sub, Prisma.PostWhereInput>({
+    key: 'relationMaps',
+  }, (builder) => {
+    builder.assign({
+      id: 'published',
+    })
+    builder.ADD(((builder) => {
+      builder.assign('name')
+    }))
   })
-  .contains(['name', 'startTime'])
-  .contains({
-    name: 'profileId',
+  .time('startTime')
+  .arrayToString({ ids: 'id' })
+  .assign('endTime')
+  .set({
+    key: {
+      sub: 'email',
+    },
+    type: 'plainType',
+    get: 'email',
+    cb(query, k, val) {
+      query[k] = val
+    },
   })
-  .relationOr<{ id: number }>({ ids: 'Profile' }, 'id')
-  .relationOr<{ id: number }>({ ids: 'email' }, 'id')
-  .relationAnd(['ids', 'idsstr'])
-  .in({
-    ids: 'name',
-  })
-  .notIn({ ids: 'updateAt' })
-  .ADD((builer) => {
-    builer
-      .contains('ids')
-      .in('ids')
-      .relationOr('ids')
-      .contains({ sub: 'OR' }, 'name')
-  })
-  // .relationNot(['ids', 'idsstr'])
-  .query()
+  .relation('relation')
+  .create()
 
-console.log(JSON.stringify(query, null, 2))
+console.log(JSON.stringify(create, null, 2))
 
 const prisma = new PrismaClient()
 const app = express()
@@ -56,7 +91,8 @@ async function main() {
       data: {
         email: `${name}@email.com`,
         name,
-        Profile: { connect: { User: {} } },
+        Profile: { connect: [{ id: 2, AND: [{ id: 1 }] }] },
+        Post: { connect: { id: 1 } },
       },
     })
     res.status(200).json({
