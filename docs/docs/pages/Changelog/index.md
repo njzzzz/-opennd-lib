@@ -1,3 +1,15 @@
+## <small>0.0.13 (2024-06-27)</small>
+
+* fix: PrismaQueryBuilder  relation query ([41ab53430e300175a30246231cdd11f4bedf0e15](https://github.com/njzzzz/-opennd-lib/commit/41ab53430e300175a30246231cdd11f4bedf0e15))
+
+
+
+## <small>0.0.12 (2024-06-27)</small>
+
+* fix: PrismaQueryBuilder  timeRange ltr gte ([e5a34881c7a1e061e8a102e9d8a0b7d999c88d06](https://github.com/njzzzz/-opennd-lib/commit/e5a34881c7a1e061e8a102e9d8a0b7d999c88d06))
+
+
+
 ## <small>0.0.11 (2024-06-27)</small>
 
 * fix: PrismaQueryBuilder  timeRange add toISOString ([8f29d833ef720a1e759ed39f070df3ffb4c1809b](https://github.com/njzzzz/-opennd-lib/commit/8f29d833ef720a1e759ed39f070df3ffb4c1809b))
