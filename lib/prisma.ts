@@ -28,10 +28,10 @@ TableFields = any,
     const endTimeVal = this.#source[endTimeField] as Date
     const query: Partial<{ lte: string, gte: string }> = {}
     if (!isEmptyInput(startTimeVal))
-      query.lte = new Date(startTimeVal).toISOString()
+      query.gte = new Date(startTimeVal).toISOString()
 
     if (!isEmptyInput(endTimeVal))
-      query.gte = new Date(endTimeVal).toISOString()
+      query.lte = new Date(endTimeVal).toISOString()
 
     this.merge({
       [to]: query,
