@@ -12,7 +12,7 @@
 notIn: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
         get?: string;
         join?: string;
-        itemGet?: string;
+        idKey?: string;
         filter?: Filter;
     }) => this;
 ```

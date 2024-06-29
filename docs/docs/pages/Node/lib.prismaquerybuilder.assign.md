@@ -13,7 +13,7 @@ assign: <RelationTableFields extends Record<string, any> = Record<string, any>>(
         join?: string;
         get?: string;
         filter?: Filter;
-        itemGet?: keyof RelationTableFields;
+        idKey?: keyof RelationTableFields;
         operate?: Operate;
     }) => this;
 ```

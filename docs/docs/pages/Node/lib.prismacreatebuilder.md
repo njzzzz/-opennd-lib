@@ -77,7 +77,7 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { join?: string; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; itemGet?: keyof RelationTableFields; operate?: [CreateOperate](./lib.createoperate.md)<!-- -->; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { join?: string; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; idKey?: keyof RelationTableFields; operate?: [CreateOperate](./lib.createoperate.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
@@ -113,7 +113,7 @@ Description
 
 </td><td>
 
-(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { join?: string; get?: string; itemGet?: string; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
+(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { join?: string; get?: string; idKey?: string; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
@@ -132,7 +132,7 @@ Description
 
 </td><td>
 
-&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; itemGet?: keyof RelationTableFields; }, cb?: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
+&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; idKey?: keyof RelationTableFields; }, cb?: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
 
 
 </td><td>
@@ -151,7 +151,7 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; join?: string; itemGet?: keyof RelationTableFields; type: [CreateOperate](./lib.createoperate.md)<!-- -->; builder?: (t: any) =&gt; any; cb: (query: any, k: string, val: any) =&gt; void; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; join?: string; idKey?: keyof RelationTableFields; type: [CreateOperate](./lib.createoperate.md)<!-- -->; builder?: (t: any) =&gt; any; cb: (query: any, k: string, val: any) =&gt; void; }) =&gt; this
 
 
 </td><td>

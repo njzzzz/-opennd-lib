@@ -12,7 +12,7 @@
 arrayToString(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
         join?: string;
         get?: string;
-        itemGet?: string;
+        idKey?: string;
         filter?: Filter;
     }): this;
 ```
@@ -56,7 +56,7 @@ params
 
 </td><td>
 
-{ join?: string; get?: string; itemGet?: string; filter?: [Filter](./lib.filter.md)<!-- -->; }
+{ join?: string; get?: string; idKey?: string; filter?: [Filter](./lib.filter.md)<!-- -->; }
 
 
 </td><td>

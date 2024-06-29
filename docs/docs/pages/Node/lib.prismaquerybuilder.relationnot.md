@@ -11,7 +11,7 @@
 ```typescript
 relationNot: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
         get?: string;
-        itemGet?: keyof RelationTableFields;
+        idKey?: keyof RelationTableFields;
         filter?: Filter;
     }) => this;
 ```

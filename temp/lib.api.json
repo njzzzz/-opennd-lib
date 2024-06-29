@@ -1526,8 +1526,13 @@
               "text": "): "
             },
             {
+              "kind": "Reference",
+              "text": "val",
+              "canonicalReference": "@opennd/lib!~val"
+            },
+            {
               "kind": "Content",
-              "text": "boolean"
+              "text": " is string"
             },
             {
               "kind": "Content",
@@ -1537,7 +1542,7 @@
           "fileUrlPath": "lib/utils.ts",
           "returnTypeTokenRange": {
             "startIndex": 3,
-            "endIndex": 4
+            "endIndex": 5
           },
           "releaseTag": "Public",
           "overloadIndex": 1,
@@ -1654,7 +1659,7 @@
             },
             {
               "kind": "Content",
-              "text": "'arrayType' | 'plainType' | 'dateType'"
+              "text": "'arrayType' | 'plainType' | 'dateType' | 'relationManyQueryType' | 'relationQueryType'"
             },
             {
               "kind": "Content",
@@ -1807,7 +1812,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "{\n        join?: string;\n        get?: string;\n        itemGet?: string;\n        filter?: "
+                  "text": "{\n        join?: string;\n        get?: string;\n        idKey?: string;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
@@ -1917,7 +1922,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        itemGet?: keyof RelationTableFields;\n        operate?: "
+                  "text": ";\n        idKey?: keyof RelationTableFields;\n        operate?: "
                 },
                 {
                   "kind": "Reference",
@@ -2004,7 +2009,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        itemGet?: string;\n        filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        join?: string;\n        get?: string;\n        idKey?: string;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
@@ -2079,7 +2084,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        itemGet?: keyof RelationTableFields;\n    }, cb?: (builder: "
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
                 },
                 {
                   "kind": "Reference",
@@ -2172,7 +2177,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        join?: string;\n        itemGet?: keyof RelationTableFields;\n        type: "
+                  "text": ";\n        join?: string;\n        idKey?: keyof RelationTableFields;\n        type: "
                 },
                 {
                   "kind": "Reference",
@@ -2472,7 +2477,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        itemGet?: keyof RelationTableFields;\n        operate?: "
+                  "text": ";\n        idKey?: keyof RelationTableFields;\n        operate?: "
                 },
                 {
                   "kind": "Reference",
@@ -2652,7 +2657,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        itemGet?: string;\n    }) => this"
+                  "text": ";\n        idKey?: string;\n    }) => this"
                 },
                 {
                   "kind": "Content",
@@ -2730,7 +2735,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        join?: string;\n        itemGet?: string;\n        filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        join?: string;\n        idKey?: string;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
@@ -2865,7 +2870,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        itemGet?: keyof RelationTableFields;\n        filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        idKey?: keyof RelationTableFields;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
@@ -2888,6 +2893,258 @@
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 12
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationManyEvery:member",
+              "docComment": "/**\n * @description 创建多个关联，支持条件\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationManyEvery: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType = any, RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PrismaQueryBuilder",
+                  "canonicalReference": "@opennd/lib!PrismaQueryBuilder:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType, RelationTableFields>>) => any) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationManyEvery",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationManyNone:member",
+              "docComment": "/**\n * @description 创建多个关联，支持条件\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationManyNone: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType = any, RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PrismaQueryBuilder",
+                  "canonicalReference": "@opennd/lib!PrismaQueryBuilder:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType, RelationTableFields>>) => any) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationManyNone",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationManySome:member",
+              "docComment": "/**\n * @description 创建多个关联，支持条件\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationManySome: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType = any, RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PrismaQueryBuilder",
+                  "canonicalReference": "@opennd/lib!PrismaQueryBuilder:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType, RelationTableFields>>) => any) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationManySome",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
               },
               "isStatic": false,
               "isProtected": false,
@@ -2940,7 +3197,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        itemGet?: keyof RelationTableFields;\n        filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        idKey?: keyof RelationTableFields;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
@@ -3015,7 +3272,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        itemGet?: keyof RelationTableFields;\n        filter?: "
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n        idKey?: keyof RelationTableFields;\n        filter?: "
                 },
                 {
                   "kind": "Reference",
@@ -3038,6 +3295,90 @@
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 12
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#relationQuery:member",
+              "docComment": "/**\n * @description 创建条件关联\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "relationQuery: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType = any, RelationTableFields extends "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any> = "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, any>>(params: {\n        key: keyof T | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InstanceType",
+                  "canonicalReference": "!InstanceType:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<typeof "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PrismaQueryBuilder",
+                  "canonicalReference": "@opennd/lib!PrismaQueryBuilder:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<SourceType, RelationTableFields>>) => any) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "relationQuery",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 14
               },
               "isStatic": false,
               "isProtected": false,
@@ -3099,7 +3440,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        join?: string;\n        itemGet?: keyof RelationTableFields;\n        type: "
+                  "text": ";\n        join?: string;\n        idKey?: keyof RelationTableFields;\n        type: "
                 },
                 {
                   "kind": "Reference",
@@ -3108,7 +3449,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": ";\n        cb: (query: any, k: string, val: any) => void;\n    }) => this"
+                  "text": ";\n        cb: (query: any, k: string, val: any) => void;\n        builder?: (t: any) => any;\n    }) => this"
                 },
                 {
                   "kind": "Content",
@@ -3147,7 +3488,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<TableFields, 'NOT' | 'OR' | 'AND'>;\n    }) => this"
+                  "text": "<TableFields, \"NOT\" | \"OR\" | \"AND\">;\n    }) => this"
                 },
                 {
                   "kind": "Content",

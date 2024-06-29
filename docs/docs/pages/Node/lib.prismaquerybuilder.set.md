@@ -12,8 +12,9 @@ set: <RelationTableFields extends Record<string, any> = Record<string, any>>(par
         get?: string;
         filter?: Filter;
         join?: string;
-        itemGet?: keyof RelationTableFields;
+        idKey?: keyof RelationTableFields;
         type: Operate;
         cb: (query: any, k: string, val: any) => void;
+        builder?: (t: any) => any;
     }) => this;
 ```

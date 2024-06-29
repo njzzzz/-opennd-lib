@@ -96,7 +96,7 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { join?: string; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; itemGet?: keyof RelationTableFields; operate?: [Operate](./lib.operate.md)<!-- -->; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { join?: string; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; idKey?: keyof RelationTableFields; operate?: [Operate](./lib.operate.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
@@ -153,7 +153,7 @@ Description
 
 </td><td>
 
-(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; itemGet?: string; }) =&gt; this
+(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; idKey?: string; }) =&gt; this
 
 
 </td><td>
@@ -191,7 +191,7 @@ Description
 
 </td><td>
 
-(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; join?: string; itemGet?: string; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
+(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; join?: string; idKey?: string; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
@@ -248,12 +248,69 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; itemGet?: keyof RelationTableFields; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; idKey?: keyof RelationTableFields; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
 
  关联查询 every，满足所有条件
+
+
+</td></tr>
+<tr><td>
+
+[relationManyEvery](./lib.prismaquerybuilder.relationmanyevery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; idKey?: keyof RelationTableFields; }, cb: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
+
+
+</td><td>
+
+ 创建多个关联，支持条件
+
+
+</td></tr>
+<tr><td>
+
+[relationManyNone](./lib.prismaquerybuilder.relationmanynone.md)
+
+
+</td><td>
+
+
+</td><td>
+
+&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; idKey?: keyof RelationTableFields; }, cb: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
+
+
+</td><td>
+
+ 创建多个关联，支持条件
+
+
+</td></tr>
+<tr><td>
+
+[relationManySome](./lib.prismaquerybuilder.relationmanysome.md)
+
+
+</td><td>
+
+
+</td><td>
+
+&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; idKey?: keyof RelationTableFields; }, cb: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
+
+
+</td><td>
+
+ 创建多个关联，支持条件
 
 
 </td></tr>
@@ -267,7 +324,7 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; itemGet?: keyof RelationTableFields; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; idKey?: keyof RelationTableFields; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
@@ -286,12 +343,31 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; itemGet?: keyof RelationTableFields; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; idKey?: keyof RelationTableFields; filter?: [Filter](./lib.filter.md)<!-- -->; }) =&gt; this
 
 
 </td><td>
 
  关联查询 some，满足其中一个条件即可
+
+
+</td></tr>
+<tr><td>
+
+[relationQuery](./lib.prismaquerybuilder.relationquery.md)
+
+
+</td><td>
+
+
+</td><td>
+
+&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; idKey?: keyof RelationTableFields; }, cb: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
+
+
+</td><td>
+
+ 创建条件关联
 
 
 </td></tr>
@@ -305,7 +381,7 @@ Description
 
 </td><td>
 
-&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; join?: string; itemGet?: keyof RelationTableFields; type: [Operate](./lib.operate.md)<!-- -->; cb: (query: any, k: string, val: any) =&gt; void; }) =&gt; this
+&lt;RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; get?: string; filter?: [Filter](./lib.filter.md)<!-- -->; join?: string; idKey?: keyof RelationTableFields; type: [Operate](./lib.operate.md)<!-- -->; cb: (query: any, k: string, val: any) =&gt; void; builder?: (t: any) =&gt; any; }) =&gt; this
 
 
 </td><td>
@@ -322,7 +398,7 @@ Description
 
 </td><td>
 
-({ startTimeField, endTimeField, to }: { startTimeField: keyof T; endTimeField: keyof T; to: keyof Omit&lt;TableFields, 'NOT' \| 'OR' \| 'AND'&gt;; }) =&gt; this
+({ startTimeField, endTimeField, to }: { startTimeField: keyof T; endTimeField: keyof T; to: keyof Omit&lt;TableFields, "NOT" \| "OR" \| "AND"&gt;; }) =&gt; this
 
 
 </td><td>

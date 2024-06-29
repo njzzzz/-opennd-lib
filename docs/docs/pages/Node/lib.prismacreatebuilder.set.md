@@ -12,7 +12,7 @@ set: <RelationTableFields extends Record<string, any> = Record<string, any>>(par
         get?: string;
         filter?: Filter;
         join?: string;
-        itemGet?: keyof RelationTableFields;
+        idKey?: keyof RelationTableFields;
         type: CreateOperate;
         builder?: (t: any) => any;
         cb: (query: any, k: string, val: any) => void;

@@ -1,3 +1,9 @@
+## <small>0.0.14 (2024-06-29)</small>
+
+* feat: 新增prisma多关联查询 ([560acf3ef6d515630e3bd5e51b8d4f2d3ad62001](https://github.com/njzzzz/-opennd-lib/commit/560acf3ef6d515630e3bd5e51b8d4f2d3ad62001))
+
+
+
 ## <small>0.0.13 (2024-06-27)</small>
 
 * fix: PrismaQueryBuilder  relation query ([41ab53430e300175a30246231cdd11f4bedf0e15](https://github.com/njzzzz/-opennd-lib/commit/41ab53430e300175a30246231cdd11f4bedf0e15))

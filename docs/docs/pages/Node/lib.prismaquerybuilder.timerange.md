@@ -12,6 +12,6 @@
 timeRange: ({ startTimeField, endTimeField, to }: {
         startTimeField: keyof T;
         endTimeField: keyof T;
-        to: keyof Omit<TableFields, 'NOT' | 'OR' | 'AND'>;
+        to: keyof Omit<TableFields, "NOT" | "OR" | "AND">;
     }) => this;
 ```

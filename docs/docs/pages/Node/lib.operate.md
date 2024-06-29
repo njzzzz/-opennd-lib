@@ -7,5 +7,5 @@
 **Signature:**
 
 ```typescript
-export type Operate = 'arrayType' | 'plainType' | 'dateType';
+export type Operate = 'arrayType' | 'plainType' | 'dateType' | 'relationManyQueryType' | 'relationQueryType';
 ```

@@ -12,6 +12,6 @@
 in: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
         get?: string;
         filter?: Filter;
-        itemGet?: string;
+        idKey?: string;
     }) => this;
 ```
