@@ -1,8 +1,8 @@
 import { isArray, isEmptyInput, isPlainObj } from '@/utils'
 
 export class PrismaQueryBuilder<
-T,
-TableFields = any,
+  T,
+  TableFields = any,
 > {
   #query: any = {}
   #source: T
@@ -105,7 +105,7 @@ TableFields = any,
       join?: string
       get?: string
       filter?: Filter
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       operate?: Operate
     } = {},
   ) => {
@@ -113,13 +113,13 @@ TableFields = any,
       filter,
       get,
       join,
-      itemGet = 'id',
+      idKey = 'id',
       operate = 'plainType',
     } = params
     this.set({
       filter,
       get,
-      itemGet: itemGet as any,
+      idKey: idKey as any,
       key,
       join,
       type: operate,
@@ -137,24 +137,24 @@ TableFields = any,
     key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>,
     params: {
       get?: string
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       filter?: Filter
     } = {},
   ) => {
     const {
       get,
       filter = Number,
-      itemGet = 'id',
+      idKey = 'id',
     } = params
     this.set({
       filter,
       get,
-      itemGet,
+      idKey,
       key,
       type: 'arrayType',
       cb: (query, k, val) => {
         query[k] = {
-          [itemGet]: {
+          [idKey]: {
             in: val,
           },
         }
@@ -171,20 +171,20 @@ TableFields = any,
     params:
     {
       get?: string
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       filter?: Filter
     } = {},
   ) => {
-    const { get, filter = Number, itemGet = 'id' } = params
+    const { get, filter = Number, idKey = 'id' } = params
     this.set({
       filter,
       get,
-      itemGet,
+      idKey,
       key,
       type: 'arrayType',
       cb: (query, k, val) => {
         query[k] = {
-          AND: val.map(v => ({ [itemGet]: { in: [v] } })),
+          AND: val.map(v => ({ [idKey]: { in: [v] } })),
         }
       },
     })
@@ -199,22 +199,156 @@ TableFields = any,
     params:
     {
       get?: string
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       filter?: Filter
     } = {},
   ) => {
-    const { get, filter = Number, itemGet = 'id' } = params
+    const { get, filter = Number, idKey = 'id' } = params
     this.set({
       filter,
       get,
       key,
-      itemGet,
+      idKey,
       type: 'arrayType',
       cb: (query, k, val) => {
         query[k] = {
-          [itemGet]: {
+          [idKey]: {
             notIn: val,
           },
+        }
+      },
+    })
+    return this
+  }
+
+  /**
+   * @description 创建条件关联
+   */
+  relationQuery = <
+    SourceType = any,
+    RelationTableFields extends Record<string, any> = Record<string, any>,
+  >(
+    params: {
+      key: keyof T | Partial<Record<keyof T, keyof TableFields>>
+      /**
+       * @description 指定关联id名称默认为'id'
+       */
+      idKey?: keyof RelationTableFields
+    },
+  /**
+   * 关联条件构造器
+   */
+    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+  ) => {
+    const { key, idKey = 'id' } = params ?? {}
+    this.set({
+      key,
+      type: 'relationQueryType',
+      idKey,
+      builder: cb,
+      cb(query, k, val) {
+        query[k] = val
+      },
+    })
+    return this
+  }
+
+  /**
+   * @description 创建多个关联，支持条件
+   */
+  relationManySome = <
+    SourceType = any,
+    RelationTableFields extends Record<string, any> = Record<string, any>,
+  >(
+    params: {
+      key: keyof T | Partial<Record<keyof T, keyof TableFields>>
+      /**
+       * @description 指定关联id名称默认为'id'
+       */
+      idKey?: keyof RelationTableFields
+    },
+  /**
+   * 关联条件构造器
+   */
+    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+  ) => {
+    const { key, idKey = 'id' } = params ?? {}
+    this.set({
+      key,
+      type: 'relationManyQueryType',
+      idKey,
+      builder: cb,
+      cb(query, k, val) {
+        query[k] = {
+          some: val,
+        }
+      },
+    })
+    return this
+  }
+
+  /**
+   * @description 创建多个关联，支持条件
+   */
+  relationManyNone = <
+    SourceType = any,
+    RelationTableFields extends Record<string, any> = Record<string, any>,
+  >(
+    params: {
+      key: keyof T | Partial<Record<keyof T, keyof TableFields>>
+      /**
+       * @description 指定关联id名称默认为'id'
+       */
+      idKey?: keyof RelationTableFields
+    },
+  /**
+   * 关联条件构造器
+   */
+    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+  ) => {
+    const { key, idKey = 'id' } = params ?? {}
+    this.set({
+      key,
+      type: 'relationManyQueryType',
+      idKey,
+      builder: cb,
+      cb(query, k, val) {
+        query[k] = {
+          none: val,
+        }
+      },
+    })
+    return this
+  }
+
+  /**
+   * @description 创建多个关联，支持条件
+   */
+  relationManyEvery = <
+    SourceType = any,
+    RelationTableFields extends Record<string, any> = Record<string, any>,
+  >(
+    params: {
+      key: keyof T | Partial<Record<keyof T, keyof TableFields>>
+      /**
+       * @description 指定关联id名称默认为'id'
+       */
+      idKey?: keyof RelationTableFields
+    },
+  /**
+   * 关联条件构造器
+   */
+    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+  ) => {
+    const { key, idKey = 'id' } = params ?? {}
+    this.set({
+      key,
+      type: 'relationManyQueryType',
+      idKey,
+      builder: cb,
+      cb(query, k, val) {
+        query[k] = {
+          every: val,
         }
       },
     })
@@ -231,14 +365,14 @@ TableFields = any,
     {
       get?: string
       filter?: Filter
-      itemGet?: string
+      idKey?: string
     } = {},
   ) => {
-    const { get, filter, itemGet = 'id' } = params
+    const { get, filter, idKey = 'id' } = params
     this.set({
       filter,
       get,
-      itemGet,
+      idKey,
       key,
       type: 'arrayType',
       cb: (query, k, val) => {
@@ -260,15 +394,15 @@ TableFields = any,
     {
       get?: string
       join?: string
-      itemGet?: string
+      idKey?: string
       filter?: Filter
     } = {},
   ) => {
-    const { get, filter, itemGet = 'id' } = params
+    const { get, filter, idKey = 'id' } = params
     this.set({
       filter,
       get,
-      itemGet,
+      idKey,
       key,
       type: 'arrayType',
       cb: (query, k, val) => {
@@ -367,128 +501,12 @@ TableFields = any,
     }
   }
 
-  // /**
-  //  * @description 此处定义CreateRelation的策略
-  //  */
-  // private mergeCreateRelation(query) {
-  //   const { NOT = [], OR = [], AND = [] } = this.#createRelation
-  //   const has = Reflect.ownKeys(query).length
-  //   switch (this.#mode) {
-  //     case 'NOT':
-  //       if (has) {
-  //         this.#createRelation = {
-  //           ...this.#createRelation,
-  //           NOT: [
-  //             ...NOT,
-  //             query,
-  //           ],
-  //         }
-  //       }
-
-  //       break
-  //     case 'OR':
-  //       if (has) {
-  //         this.#createRelation = {
-  //           ...this.#createRelation,
-  //           OR: [
-  //             ...OR,
-  //             query,
-  //           ],
-  //         }
-  //       }
-  //       break
-  //     case 'AND':
-  //       this.#createRelation = {
-  //         ...this.#createRelation,
-  //         AND: [
-  //           ...AND,
-  //           query,
-  //         ],
-  //       }
-  //       break
-  //     default:
-  //       this.#createRelation = {
-  //         ...this.#createRelation,
-  //         ...query,
-  //       }
-  //       break
-  //   }
-  // }
-
-  // /**
-  //  * @description 此处定义Create merge的策略
-  //  */
-  // private mergeCreate(query) {
-  //   this.#create = {
-  //     ...this.#create,
-  //     ...query,
-  //   }
-  // }
-
   /**
    * @description 此处定义merge的策略
    */
   private merge = (query) => {
-    // 合并创建逻辑
-    // if (this.#mode === 'CREATE')
-    //   this.mergeCreate(query)
-
-    // else if (this.#mode === 'CREATE_RELATION')
-    //   this.mergeCreateRelation(query)
-
-    // else
     this.mergeQuery(query)
   }
-
-  // /**
-  //  * @description 创建 connect
-  //  */
-  // createRelation<RelationTableFields extends Record<string, any> = Record<string, any>>(
-  //   params: {
-  //     key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
-  //     get?: string
-  //     itemGet?: keyof RelationTableFields
-  //     join?: string
-  //     filter?: Filter
-  //   },
-  //   fn: (t: this) => any,
-  // ) {
-  //   this.#mode = 'CREATE_RELATION'
-  //   const { get, filter = Number, key, itemGet = 'id' } = params ?? {}
-  //   fn(this)
-  //   console.log(this.#createRelation)
-
-  //   // this.set({
-  //   //   filter,
-  //   //   get,
-  //   //   itemGet,
-  //   //   key,
-  //   //   type: 'arrayType',
-  //   //   cb: (query, k) => {
-  //   //     console.log(this.#createRelation)
-  //   //     query[k] = {
-  //   //       connect: { [itemGet]: this.#createRelation },
-  //   //     }
-  //   //   },
-  //   // })
-  //   return this
-  // }
-  // /**
-  //  * @description 生成创建数组 - 时间类型
-  //  */
-
-  // createTime(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params: { get?: string } = {}) {
-  //   const { get } = params
-  //   this.set({
-  //     key,
-  //     get,
-  //     type: 'dateType',
-  //     cb(query, k, val) {
-  //       query[k] = val
-  //     },
-  //   })
-  //   return this
-  // }
 
   set = <RelationTableFields extends Record<string, any> = Record<string, any>>(
     params:
@@ -497,9 +515,10 @@ TableFields = any,
       get?: string
       filter?: Filter
       join?: string
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       type: Operate
       cb: (query: any, k: string, val: any) => void
+      builder?: (t: any) => any
     },
   ) => {
     const {
@@ -507,9 +526,10 @@ TableFields = any,
       cb,
       filter,
       get,
-      itemGet,
+      idKey,
       key,
       type,
+      builder,
     } = params ?? {}
     const {
       keys,
@@ -522,14 +542,15 @@ TableFields = any,
       this[type]({
         val,
         filter,
-        itemGet: itemGet as any,
+        idKey: idKey as any,
         get,
         join,
         k,
         isObj,
+        builder,
         key,
-        cb: (...args) => {
-          cb(query, ...args)
+        cb: (k, val) => {
+          cb(query, k, val)
         },
       },
       )
@@ -574,7 +595,7 @@ TableFields = any,
       get: keyof RelationTableFields
       k: any
       isObj: boolean
-      itemGet: string
+      idKey: string
       key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
       cb: (k: string, val: any) => void
     },
@@ -583,7 +604,7 @@ TableFields = any,
       val,
       filter,
       get,
-      itemGet = 'id',
+      idKey = 'id',
       isObj,
       k,
       key,
@@ -596,7 +617,7 @@ TableFields = any,
       }
       else if (isPlainObj(val[0])) {
         // 值为对象
-        val = val.map(item => filter ? filter(item[itemGet]) : item[itemGet]).filter(v => !isEmptyInput(v))
+        val = val.map(item => filter ? filter(item[idKey]) : item[idKey]).filter(v => !isEmptyInput(v))
       }
       else {
         val = val.map(id => filter ? filter(id) : id).filter(v => !isEmptyInput(v))
@@ -616,7 +637,7 @@ TableFields = any,
       isObj: boolean
       join: string
       get: string
-      itemGet: string
+      idKey: string
       filter: Filter
       key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
       cb: (k: string, val: any) => void
@@ -630,14 +651,20 @@ TableFields = any,
       isObj,
       k,
       key,
-      itemGet,
+      idKey,
       filter,
     } = params ?? {}
     val = isEmptyInput(get) ? val : val?.[get]
     if (!isEmptyInput(val)) {
-    // 对象数组
-      if (isArray(val) && isPlainObj(val[0])) {
-        val = val.map(item => filter ? filter(item[itemGet]) : item[itemGet]).filter(v => !isEmptyInput(v)).join(join)
+      const isObjItem = isPlainObj(val[0])
+      // 对象数组
+      if (isArray(val)) {
+        if (isObjItem) {
+          val = val.map(item => filter ? filter(item[idKey]) : item[idKey]).filter(v => !isEmptyInput(v)).join(join)
+        }
+        else {
+          val = val.map(item => filter ? filter(item) : item).filter(v => !isEmptyInput(v)).join(join)
+        }
       }
       if (filter) {
         val = filter(val)
@@ -675,14 +702,106 @@ TableFields = any,
       cb(k, val)
     }
   }
+
+  /**
+   *  @description 处理条件关联类型
+   */
+  private relationManyQueryType = (
+    params: {
+      val: any
+      k: any
+      isObj: boolean
+      join: string
+      get: string
+      builder: (t: any) => any
+      idKey: string
+      filter: Filter
+      key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      cb: (k: string, val: any) => void
+    },
+  ) => {
+    let {
+      val,
+      get,
+      cb,
+      isObj,
+      k,
+      key,
+      idKey,
+      builder,
+    } = params ?? {}
+    val = isEmptyInput(get) ? val : val?.[get]
+    if (!isEmptyInput(val)) {
+      if (typeof val === 'string') {
+        val = val.split(',')
+      }
+      if (isArray(val)) {
+        const isObjItem = isPlainObj(val[0])
+        if (builder) {
+          const queryBuilder = new PrismaQueryBuilder(isObjItem ? val : { [idKey]: val })
+          builder(queryBuilder)
+          val = queryBuilder.query()
+        }
+        k = isObj ? key[k] : k
+        cb(k, val)
+      }
+      else {
+        throw new Error('relation的值不是数组类型，请改用.relation()')
+      }
+    }
+  }
+
+  /**
+   *  @description 处理条件关联类型
+   */
+  private relationQueryType = (
+    params: {
+      val: any
+      k: any
+      isObj: boolean
+      join: string
+      get: string
+      builder: (t: any) => any
+      idKey: string
+      filter: Filter
+      key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
+      cb: (k: string, val: any) => void
+    },
+  ) => {
+    let {
+      val,
+      get,
+      cb,
+      isObj,
+      k,
+      key,
+      idKey,
+      builder,
+    } = params ?? {}
+    val = isEmptyInput(get) ? val : val?.[get]
+    if (!isEmptyInput(val)) {
+      if (isArray(val)) {
+        throw new Error('relation的值是数组类型，请改用.relationMany*')
+      }
+      else {
+        if (builder) {
+          const queryBuilder = new PrismaQueryBuilder({ [idKey]: val })
+          builder(queryBuilder)
+          val = queryBuilder.query()
+        }
+        k = isObj ? key[k] : k
+        cb(k, val)
+      }
+    }
+  }
 }
-export type Operate = 'arrayType' | 'plainType' | 'dateType'
+export type Operate = 'arrayType' | 'plainType' | 'dateType' | 'relationManyQueryType' | 'relationQueryType'
 export type CreateOperate = 'arrayType' | 'plainType' | 'dateType' | 'relationQueryType'
 export type Filter = BooleanConstructor | StringConstructor | NumberConstructor | null
 
 export class PrismaCreateBuilder<
-T,
-TableFields = any,
+  T,
+  TableFields = any,
 > {
   #create: any = {}
   #source: T
@@ -701,7 +820,7 @@ TableFields = any,
       join?: string
       get?: string
       filter?: Filter
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       operate?: CreateOperate
     } = {},
   ) => {
@@ -709,13 +828,13 @@ TableFields = any,
       filter,
       get,
       join,
-      itemGet = 'id',
+      idKey = 'id',
       operate = 'plainType',
     } = params
     this.set({
       filter,
       get,
-      itemGet: itemGet as any,
+      idKey: idKey as any,
       key,
       join,
       type: operate,
@@ -768,17 +887,17 @@ TableFields = any,
     params: {
       join?: string
       get?: string
-      itemGet?: string
+      idKey?: string
       filter?: Filter
     } = {},
   ) {
-    const { join, filter, get, itemGet } = params
+    const { join, filter, get, idKey } = params
     this.set({
       key,
       get,
       join,
       filter,
-      itemGet,
+      idKey,
       type: 'plainType',
       cb(query, k, val) {
         query[k] = val
@@ -795,22 +914,22 @@ TableFields = any,
     params: {
       join?: string
       get?: string
-      itemGet?: string
+      idKey?: string
       filter?: Filter
     } = {},
   ) => {
-    const { join, filter, get, itemGet = 'id' } = params
+    const { join, filter, get, idKey = 'id' } = params
     this.set({
       key,
       get,
       join,
       filter,
-      itemGet,
+      idKey,
       type: 'plainType',
       cb(query, k, val) {
         query[k] = {
           connect: {
-            [itemGet]: val,
+            [idKey]: val,
           },
         }
       },
@@ -822,26 +941,26 @@ TableFields = any,
    * @description 创建多个关联，支持条件
    */
   relationMany = <
-  SourceType = any,
-  RelationTableFields extends Record<string, any> = Record<string, any>,
- >(
+    SourceType = any,
+    RelationTableFields extends Record<string, any> = Record<string, any>,
+  >(
     params: {
       key: keyof T | Partial<Record<keyof T, keyof TableFields>>
       /**
        * @description 指定关联id名称默认为'id'
        */
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
     },
   /**
    * 关联条件构造器
    */
     cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
   ) => {
-    const { key, itemGet = 'id' } = params ?? {}
+    const { key, idKey = 'id' } = params ?? {}
     this.set({
       key,
       type: 'relationQueryType',
-      itemGet,
+      idKey,
       builder: cb,
       cb(query, k, val) {
         query[k] = {
@@ -859,7 +978,7 @@ TableFields = any,
       get?: string
       filter?: Filter
       join?: string
-      itemGet?: keyof RelationTableFields
+      idKey?: keyof RelationTableFields
       type: CreateOperate
       builder?: (t: any) => any
       cb: (query: any, k: string, val: any) => void
@@ -870,7 +989,7 @@ TableFields = any,
       cb,
       filter,
       get,
-      itemGet,
+      idKey,
       key,
       type,
       builder,
@@ -886,7 +1005,7 @@ TableFields = any,
       this[type]({
         val,
         filter,
-        itemGet: itemGet as any,
+        idKey: idKey as any,
         get,
         builder,
         join,
@@ -926,7 +1045,7 @@ TableFields = any,
       get: keyof RelationTableFields
       k: any
       isObj: boolean
-      itemGet: string
+      idKey: string
       key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
       cb: (k: string, val: any) => void
     },
@@ -935,7 +1054,7 @@ TableFields = any,
       val,
       filter,
       get,
-      itemGet = 'id',
+      idKey = 'id',
       isObj,
       k,
       key,
@@ -948,7 +1067,7 @@ TableFields = any,
       }
       else if (isPlainObj(val[0])) {
         // 值为对象
-        val = val.map(item => filter ? filter(item[itemGet]) : item[itemGet]).filter(v => !isEmptyInput(v))
+        val = val.map(item => filter ? filter(item[idKey]) : item[idKey]).filter(v => !isEmptyInput(v))
       }
       else {
         val = val.map(id => filter ? filter(id) : id).filter(v => !isEmptyInput(v))
@@ -968,7 +1087,7 @@ TableFields = any,
       isObj: boolean
       join: string
       get: string
-      itemGet: string
+      idKey: string
       filter: Filter
       key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
       cb: (k: string, val: any) => void
@@ -982,7 +1101,7 @@ TableFields = any,
       isObj,
       k,
       key,
-      itemGet,
+      idKey,
       filter,
     } = params ?? {}
     val = isEmptyInput(get) ? val : val?.[get]
@@ -992,7 +1111,7 @@ TableFields = any,
         val = val.map(item => filter ? filter(item) : item).filter(v => !isEmptyInput(v)).join(join)
       }
       else if (isArray(val) && isPlainObj(val[0])) {
-        val = val.map(item => filter ? filter(item[itemGet]) : item[itemGet]).filter(v => !isEmptyInput(v)).join(join)
+        val = val.map(item => filter ? filter(item[idKey]) : item[idKey]).filter(v => !isEmptyInput(v)).join(join)
       }
       if (filter) {
         val = filter(val)
@@ -1042,7 +1161,7 @@ TableFields = any,
       join: string
       get: string
       builder: (t: any) => any
-      itemGet: string
+      idKey: string
       filter: Filter
       key: string | number | symbol | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>
       cb: (k: string, val: any) => void
@@ -1055,7 +1174,7 @@ TableFields = any,
       isObj,
       k,
       key,
-      itemGet,
+      idKey,
       builder,
     } = params ?? {}
     val = isEmptyInput(get) ? val : val?.[get]
@@ -1072,7 +1191,7 @@ TableFields = any,
           })
         }
         else {
-          val = val.map(id => ({ [itemGet]: id }))
+          val = val.map(id => ({ [idKey]: id }))
         }
         k = isObj ? key[k] : k
         cb(k, val)

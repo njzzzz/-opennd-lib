@@ -43,6 +43,7 @@
     "lib"
   ],
   "scripts": {
+    "test": "vitest",
     "build": "vite build",
     "dev:excel": "tsx watch ./playground/excel.ts",
     "dev:prisma": "tsx watch ./playground/prisma.ts",
@@ -75,6 +76,7 @@
     "eslint": "^9.2.0",
     "npm-run-all": "^4.1.5",
     "vite": "^5.3.1",
-    "vite-plugin-dts": "^3.9.1"
+    "vite-plugin-dts": "^3.9.1",
+    "vitest": "^1.6.0"
   }
 }

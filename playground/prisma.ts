@@ -45,6 +45,21 @@ const source = {
 //       })
 //   })
 //   .query()
+// prisma.user.findMany({
+//   where:{
+//     orders:{some:{id:{}}}
+//   }
+// })
+// prisma.user.findMany({
+//   where: {
+//     // gender: {
+//     //   id:{}
+//     // }
+//     // orders: {
+//     //   some: { AND: [{ id: { in: [1] } }, { name: { contains: '1' } }] },
+//     // },
+//   },
+// })
 type Source = typeof source
 type Sub = Source['relationMaps'][number]
 const create = new PrismaCreateBuilder<Source, Prisma.UserWhereInput>(source)
