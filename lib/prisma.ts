@@ -17,6 +17,46 @@ export class PrismaQueryBuilder<
   }
 
   /**
+   * @description 时间 大于
+   */
+  timeGte = (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params: {
+    get?: string
+  } = {}) => {
+    const { get } = params
+    this.set({
+      key,
+      type: 'dateType',
+      get,
+      cb(query, k, val) {
+        query[k] = {
+          gte: val,
+        }
+      },
+    })
+    return this
+  }
+
+  /**
+   * @description 时间小于
+   */
+  timeLte = (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params: {
+    get?: string
+  } = {}) => {
+    const { get } = params
+    this.set({
+      key,
+      type: 'dateType',
+      get,
+      cb(query, k, val) {
+        query[k] = {
+          lte: val,
+        }
+      },
+    })
+    return this
+  }
+
+  /**
    * @description 时间区间查询
    */
   timeRange = ({ startTimeField, endTimeField, to }: {
@@ -946,6 +986,7 @@ export class PrismaCreateBuilder<
   >(
     params: {
       key: keyof T | Partial<Record<keyof T, keyof TableFields>>
+      filter?: Filter
       /**
        * @description 指定关联id名称默认为'id'
        */
@@ -956,11 +997,12 @@ export class PrismaCreateBuilder<
    */
     cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
   ) => {
-    const { key, idKey = 'id' } = params ?? {}
+    const { key, idKey = 'id', filter = Number } = params ?? {}
     this.set({
       key,
       type: 'relationQueryType',
       idKey,
+      filter,
       builder: cb,
       cb(query, k, val) {
         query[k] = {
@@ -1172,6 +1214,7 @@ export class PrismaCreateBuilder<
       get,
       cb,
       isObj,
+      filter,
       k,
       key,
       idKey,
@@ -1191,7 +1234,7 @@ export class PrismaCreateBuilder<
           })
         }
         else {
-          val = val.map(id => ({ [idKey]: id }))
+          val = val.map(id => ({ [idKey]: filter ? filter(id) : id }))
         }
         k = isObj ? key[k] : k
         cb(k, val)

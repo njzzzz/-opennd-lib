@@ -132,7 +132,7 @@ Description
 
 </td><td>
 
-&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; idKey?: keyof RelationTableFields; }, cb?: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
+&lt;SourceType = any, RelationTableFields extends Record&lt;string, any&gt; = Record&lt;string, any&gt;&gt;(params: { key: keyof T \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;; filter?: [Filter](./lib.filter.md)<!-- -->; idKey?: keyof RelationTableFields; }, cb?: (builder: InstanceType&lt;typeof [PrismaQueryBuilder](./lib.prismaquerybuilder.md)<!-- -->&lt;SourceType, RelationTableFields&gt;&gt;) =&gt; any) =&gt; this
 
 
 </td><td>

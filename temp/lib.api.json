@@ -2084,7 +2084,16 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
+                  "text": "<keyof T, keyof TableFields>>;\n        filter?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Filter",
+                  "canonicalReference": "@opennd/lib!Filter:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
                 },
                 {
                   "kind": "Reference",
@@ -2115,7 +2124,7 @@
               "name": "relationMany",
               "propertyTypeTokenRange": {
                 "startIndex": 1,
-                "endIndex": 14
+                "endIndex": 16
               },
               "isStatic": false,
               "isProtected": false,
@@ -3463,6 +3472,102 @@
               "propertyTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 14
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#timeGte:member",
+              "docComment": "/**\n * @description 时间 大于\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "timeGte: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "timeGte",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 6
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "@opennd/lib!PrismaQueryBuilder#timeLte:member",
+              "docComment": "/**\n * @description 时间小于\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "timeLte: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(key: keyof T | (keyof T)[] | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<keyof T, keyof TableFields>>, params?: {\n        get?: string;\n    }) => this"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "timeLte",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 6
               },
               "isStatic": false,
               "isProtected": false,

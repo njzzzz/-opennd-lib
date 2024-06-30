@@ -390,6 +390,44 @@ Description
 </td></tr>
 <tr><td>
 
+[timeGte](./lib.prismaquerybuilder.timegte.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; }) =&gt; this
+
+
+</td><td>
+
+ 时间 大于
+
+
+</td></tr>
+<tr><td>
+
+[timeLte](./lib.prismaquerybuilder.timelte.md)
+
+
+</td><td>
+
+
+</td><td>
+
+(key: keyof T \| (keyof T)\[\] \| Partial&lt;Record&lt;keyof T, keyof TableFields&gt;&gt;, params?: { get?: string; }) =&gt; this
+
+
+</td><td>
+
+ 时间小于
+
+
+</td></tr>
+<tr><td>
+
 [timeRange](./lib.prismaquerybuilder.timerange.md)
 
 

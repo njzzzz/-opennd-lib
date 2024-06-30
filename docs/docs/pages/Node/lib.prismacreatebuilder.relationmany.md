@@ -11,6 +11,7 @@
 ```typescript
 relationMany: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
+        filter?: Filter;
         idKey?: keyof RelationTableFields;
     }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
 ```

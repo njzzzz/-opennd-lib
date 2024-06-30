@@ -122,6 +122,7 @@ export class PrismaCreateBuilder<T, TableFields = any> {
     }) => this;
     relationMany: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
+        filter?: Filter;
         idKey?: keyof RelationTableFields;
     }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
     // (undocumented)
@@ -216,6 +217,12 @@ export class PrismaQueryBuilder<T, TableFields = any> {
         type: Operate;
         cb: (query: any, k: string, val: any) => void;
         builder?: (t: any) => any;
+    }) => this;
+    timeGte: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
+    }) => this;
+    timeLte: (key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
+        get?: string;
     }) => this;
     timeRange: ({ startTimeField, endTimeField, to }: {
         startTimeField: keyof T;
