@@ -278,7 +278,7 @@ export class PrismaQueryBuilder<
   /**
    * 关联条件构造器
    */
-    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+    cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
   ) => {
     const { key, idKey = 'id' } = params ?? {}
     this.set({
@@ -310,7 +310,7 @@ export class PrismaQueryBuilder<
   /**
    * 关联条件构造器
    */
-    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+    cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
   ) => {
     const { key, idKey = 'id' } = params ?? {}
     this.set({
@@ -344,7 +344,7 @@ export class PrismaQueryBuilder<
   /**
    * 关联条件构造器
    */
-    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+    cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
   ) => {
     const { key, idKey = 'id' } = params ?? {}
     this.set({
@@ -378,7 +378,7 @@ export class PrismaQueryBuilder<
   /**
    * 关联条件构造器
    */
-    cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
+    cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any,
   ) => {
     const { key, idKey = 'id' } = params ?? {}
     this.set({
