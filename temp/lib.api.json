@@ -2954,7 +2954,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
                 },
                 {
                   "kind": "Reference",
@@ -3038,7 +3038,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
                 },
                 {
                   "kind": "Reference",
@@ -3122,7 +3122,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
                 },
                 {
                   "kind": "Reference",
@@ -3356,7 +3356,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb: (builder: "
+                  "text": "<keyof T, keyof TableFields>>;\n        idKey?: keyof RelationTableFields;\n    }, cb?: (builder: "
                 },
                 {
                   "kind": "Reference",

@@ -184,15 +184,15 @@ export class PrismaQueryBuilder<T, TableFields = any> {
     relationManyEvery: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
         idKey?: keyof RelationTableFields;
-    }, cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
+    }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
     relationManyNone: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
         idKey?: keyof RelationTableFields;
-    }, cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
+    }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
     relationManySome: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
         idKey?: keyof RelationTableFields;
-    }, cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
+    }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
     relationNot: <RelationTableFields extends Record<string, any> = Record<string, any>>(key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>, params?: {
         get?: string;
         idKey?: keyof RelationTableFields;
@@ -206,7 +206,7 @@ export class PrismaQueryBuilder<T, TableFields = any> {
     relationQuery: <SourceType = any, RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | Partial<Record<keyof T, keyof TableFields>>;
         idKey?: keyof RelationTableFields;
-    }, cb: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
+    }, cb?: (builder: InstanceType<typeof PrismaQueryBuilder<SourceType, RelationTableFields>>) => any) => this;
     // (undocumented)
     set: <RelationTableFields extends Record<string, any> = Record<string, any>>(params: {
         key: keyof T | (keyof T)[] | Partial<Record<keyof T, keyof TableFields>>;

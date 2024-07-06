@@ -1,3 +1,9 @@
+## <small>0.0.16 (2024-07-06)</small>
+
+* feat(prisma): relationMany* change cb to optional param ([8430469469c586b774b4f1a1851f99ffb9d3861f](https://github.com/njzzzz/-opennd-lib/commit/8430469469c586b774b4f1a1851f99ffb9d3861f))
+
+
+
 ## <small>0.0.15 (2024-06-30)</small>
 
 * feat: PrismaQueryBuilder 新增time gte lte PrismaCreateBuilder relstionMany新增filter ([22b7c5112b20df94ea22ed2b11f19402fe0ed6c1](https://github.com/njzzzz/-opennd-lib/commit/22b7c5112b20df94ea22ed2b11f19402fe0ed6c1))
