@@ -153,6 +153,8 @@ export async function excelCursorStream({
   width = 20,
 }: ExcelStreamArs) {
   res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+  // 需要暴露Content-Disposition否则客户端无法获取文件名称
+  res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition')
   res.setHeader('Content-Disposition', `attachment; filename=${encodeURIComponent(filename)}.xlsx`)
   res.setHeader('Transfer-Encoding', 'chunked')
   dataHeaderIndex = dataHeaderIndex ?? headers.length - 1

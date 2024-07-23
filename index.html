@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="fet()">fetch</button>
+    <script>
+      function fet() {
+        fetchStreamFile({url: 'http://localhost:12345/excel'})
+        // fetch('http://localhost:12345/excel').then(res => res.body).then(async body => {
+        //     const reader = body.getReader()
+        //     let x, result = [], totalLen = 0
+        //     while((x = await reader.read()) && !x.done){
+        //         console.log('receiver len', x.value.length);
+        //         // buf.set(x.value, offset)
+        //         result.push(x.value)
+        //         totalLen += x.value.length
+        //     }
+        //     const buf = new Uint8Array(totalLen)
+        //     console.log('end',buf);
+        //     let offset = 0
+        //     result.forEach(arr => {
+        //         buf.set(arr, offset)
+        //         offset+=arr.length
+        //     })
+        //     console.log('%c🤪 ~ file: index.html:25 [fet] -> buf : ', 'color: #71f4c4', buf, result);
+        //     var blob = new Blob([buf], { type: 'application/octet-stream' });
+        //     var url = URL.createObjectURL(blob);
+        //     var a = document.createElement('a');
+        //     a.style.display = 'none';
+        //     a.href = url;
+        //     // a.download = 'filename'; // 设置下载文件的名称
+        //     document.body.appendChild(a);
+        //     a.click();
+        //     document.body.removeChild(a);
+        //     // const blob = new Blob([buf],{ type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
+        //     // const link = URL.createObjectURL(blob)
+        //     // const a = document.createElement('a')
+        //     // document.body.appendChild(a)
+        //     // a.setAttribute('href', blob)
+        //     // a.click()
+        // })
+        function fetchStreamFile({ url, filename, opt }) {
+          fetch(/^http/.test(url) ? url : `${ORIGIN}${url}`, opt).then(
+            async (res) => {
+              const body = res.body;
+              const reader = body.getReader();
+              let x,
+                result = [],
+                totalLen = 0;
+              while ((x = await reader.read()) && !x.done) {
+                result.push(x.value);
+                totalLen += x.value.length;
+              }
+              const buf = new Uint8Array(totalLen);
+              let offset = 0;
+              result.forEach((arr) => {
+                buf.set(arr, offset);
+                offset += arr.length;
+              });
+              const blob = new Blob([buf], {
+                type: "application/octet-stream",
+              });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.style.display = "none";
+              a.href = url;
+              if (!filename?.length) {
+                const d =  res.headers.values()
+                console.log('%c🤪 ~ file: index.html:72 [fet/fetchStreamFile/d] -> res : ', 'color: #81f45a', res);
+                for (const iterator of d) {
+                    console.log('%c🤪 ~ file: index.html:73 [fet/fetchStreamFile] -> iterator : ', 'color: #2fe64f', iterator);
+                }
+                console.log('%c🤪 ~ file: index.html:72 [fet/fetchStreamFile/d] -> d : ', 'color: #f4a145', d);
+                filename = getFileNameFromContentDisposition(
+                    d
+                );
+              }
+              a.download = filename; // 设置下载文件的名称
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }
+          );
+        }
+
+        function getFileNameFromContentDisposition(contentDisposition) {
+          var fileName = "";
+          if (
+            contentDisposition &&
+            contentDisposition.indexOf("attachment") !== -1
+          ) {
+            var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+            var matches = filenameRegex.exec(contentDisposition);
+            if (matches != null && matches[1]) {
+              fileName = matches[1].replace(/['"]/g, "");
+            }
+          }
+          return fileName;
+        }
+      }
+    </script>
+  </body>
+</html>

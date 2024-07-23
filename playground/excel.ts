@@ -194,9 +194,12 @@ const model = new Schema({
 // }
 
 const userModel = mongoose.model('users', model)
+const user1Model = mongoose.model('user1s', model)
 
 router.get('/excel', async (req, res) => {
-  const cursor = userModel.find().skip(400000).limit(100).cursor()
+  const cursor = user1Model.find().cursor()
+  res.setHeader('Access-Control-Allow-Origin', 'localhost,127.0.0.1')
+  res.setHeader('Access-Control-Allow-Methods', 'GET,get')
   await excelCursorStream({
     filename: '真是帅的表格',
     res,
@@ -228,6 +231,29 @@ router.get('/excel', async (req, res) => {
     ],
   })
 })
+router.get('/create/10w', async (req, res) => {
+  Array.from({ length: 100000 }).fill(null).forEach(async (v, index) => {
+    try {
+      const data = await user1Model.create({
+        a: index,
+        b: index,
+        c: index,
+        d: index,
+        e: index,
+        username: index,
+        name: 'x',
+      })
+      console.log('%c🤪 ~ file: excel.ts:237 [data] -> data : ', 'color: #2d4c2e', data)
+    }
+    catch (error) {
+      console.log('%c🤪 ~ file: excel.ts:246 [] -> error : ', 'color: #f5dae6', error)
+    }
+  })
+  res.json({
+    a: 1,
+  })
+})
+
 // router.get('/', async (req, res, next) => {
 //   next()
 //   console.log(1)
