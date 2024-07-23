@@ -1,3 +1,9 @@
+## <small>0.0.17 (2024-07-23)</small>
+
+* fix: 修复无法获取Content-Disposition的问题 ([0a1faee34d05bd0fd0a8b0e84f6360434288c190](https://github.com/njzzzz/-opennd-lib/commit/0a1faee34d05bd0fd0a8b0e84f6360434288c190))
+
+
+
 ## <small>0.0.16 (2024-07-06)</small>
 
 * feat(prisma): relationMany* change cb to optional param ([8430469469c586b774b4f1a1851f99ffb9d3861f](https://github.com/njzzzz/-opennd-lib/commit/8430469469c586b774b4f1a1851f99ffb9d3861f))
