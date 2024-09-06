@@ -6,3 +6,4 @@ mysql-data-prod
 .env
 .env.prod
 http
+.idea
