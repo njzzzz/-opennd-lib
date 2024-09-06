@@ -9,9 +9,7 @@
 **Signature:**
 
 ```typescript
-export declare function withProxyLogger<T extends Record<string, any>>(proxy: T): T & {
-    onProxyReq: (proxyReq: any, req: any) => void;
-};
+export declare function withProxyLogger<T extends Record<string, any>>(proxy: T): void;
 ```
 
 ## Parameters
@@ -49,5 +47,5 @@ T
 </tbody></table>
 **Returns:**
 
-T &amp; { onProxyReq: (proxyReq: any, req: any) =&gt; void; }
+void
 
