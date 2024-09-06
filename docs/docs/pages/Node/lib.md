@@ -281,6 +281,17 @@ Description
 
 
 </td></tr>
+<tr><td>
+
+[withProxyLogger(proxy)](./lib.withproxylogger.md)
+
+
+</td><td>
+
+ 代理日志
+
+
+</td></tr>
 </tbody></table>
 
 ## Interfaces

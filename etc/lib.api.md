@@ -255,6 +255,11 @@ export function undefinedAndNotNullValueAsTrue(val: string | any[]): boolean;
 // @public
 export function undefinedAndTrueAsTrue(val: boolean | any[]): boolean;
 
+// @public
+export function withProxyLogger<T extends Record<string, any>>(proxy: T): T & {
+    onProxyReq: (proxyReq: any, req: any) => void;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```
