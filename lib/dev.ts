@@ -11,5 +11,9 @@ const options = {
  * @param proxy
  */
 export function withProxyLogger<T extends Record<string, any>>(proxy: T) {
-  return Object.assign(proxy, options)
+  Object.values(proxy).forEach((value) => {
+    if (typeof value === 'object') {
+      Object.assign(value, options)
+    }
+  })
 }
